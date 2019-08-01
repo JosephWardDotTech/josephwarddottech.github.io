@@ -1,0 +1,68 @@
+# The primary author of this blog.
+# Must be the same as `author` in `_config.yml`.
+# You can change `author1` to your shortname.
+author1:
+  # Replace <...> with your own (remove the < >)
+  name:              Joseph Ward
+  email:             joseph@josephward.tech
+
+  # Used at the bottom of each page and at the top of the `about` layout
+  # Markdown enabled, can use multiple paragraphs (enabled by `|`)
+  about:             |
+    My name is Joseph Ward and I’m a professional software tester and garden-variety nerd.
+    
+    Currently, I work for BJSS as a Tester. My main areas of interest are coaching, development, 
+    testability, and continuously improving the quality culture across our engagements. 
+
+    Outside of work I'm a fan of boardgames (especially Warhammer) and Marvel comic books, not
+    that I have time for much of that as dad of a very energetic 3-year-old.
+
+  # This photo will be used in the about section.
+  picture:
+    path:            assets/img/josephward.jpeg
+    # srcset is optional, but can be used to provide higher res versions for retina displays
+    srcset:
+      1x:            assets/img/josephward.jpeg
+      2x:            assets/img/josephward.jpeg
+
+  # Social media icons in sidebar.
+  # Comment/uncommet to show/hide. Rearrange to change the order in which they appear.
+  social:
+    twitter:         josephwardtech
+    github:          josephwarddottech
+    # download:        <url>
+    email:           joseph@josephward.tech
+    rss:             ../feed.xml
+    # facebook:        <username>
+    # google:          <number>
+    # vk:              <username>
+    # youtube:         <string_string_string>
+    # vimeo:           <username>
+    # vine:            <username>
+    # spotify:         <user>/<number>
+    # soundcloud:      <username>
+    # lastfm:          <username>
+    # instagram:       <username>
+    # flickr:          <string@string>
+    # 500px:           <username>
+    # dribbble:        <username>
+    # behance:         <username>
+    # deviantart:      <username>
+    # ello:            <username>
+    # twitch:          <username>
+    # steam:           <number>
+    # reddit:          <username>
+    # tumblr:          <username>
+    # pinterest:       <username>
+    # foursquare:      <number>
+    # yelp:            <string>
+    # stackoverflow:   <number/username>
+    # npm:             <username>
+    # hackernews:      <username>
+    # trello:          <firstnamelastname>
+    linkedin:        josephwarddottech
+    # xing:            <firstname_lastname_counter>
+    # blogger:         <number>
+    # delicious:       <username>
+    # stumbleupon:     <username>
+    # paypal:          <username>
