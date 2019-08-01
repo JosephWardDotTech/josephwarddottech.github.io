@@ -104,7 +104,7 @@ We create a `style` tag (used to, as the name implies, style HTML) with referenc
 
 Cool, huh?
 
-# wWat to do next
+# What to do next
 
 So if this works then why aren't more people doing it? Well, here's the rub. A lot of the time `window`, where we'll be injecting this JavaScript from, won't have what we want to override in scope. Worse still, we often won't be able to bring what we want into scope as it'll be within a closure. If that's the case, overriding is more like cracking a walnut with a sledgehammer than the surgical modification we'd like to make. Changing the code that a user's computer will interpret for a test can also be hard to justify. Finally, code minification and obfuscation libraries frustrate this by design.
 
