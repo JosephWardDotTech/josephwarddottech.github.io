@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "best practices vs. good practices in software testing"
+title: "Best Practices vs. Good Practices in Software Testing"
 date: 2018-08-08 00:03
 tags: testing practice blog
 ---

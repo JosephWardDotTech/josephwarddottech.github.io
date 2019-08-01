@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "tinkering around"
+title: "Tinkering around"
 date: 2017-06-29 22:56
 tags: learning blog
 ---

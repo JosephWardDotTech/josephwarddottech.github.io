@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "injecting javascript for testability"
+title: "Injecting JavaScript for Testability"
 date: 2018-07-09 09:51
 featured_image: 
 code: true
