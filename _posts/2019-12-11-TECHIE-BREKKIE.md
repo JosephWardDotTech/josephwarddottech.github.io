@@ -15,6 +15,6 @@ But... without further ado...
 
 1. [Moonpig vulnerability](https://darkport.co.uk/blog/moonpig-vulnerability/)
 2. [How I used a simple Google query to mine passwords from dozens of public Trello boards](https://www.freecodecamp.org/news/discovering-the-hidden-mine-of-credentials-and-sensitive-information-8e5ccfef2724/)
-3. [Immobilise: 'Burglar's shopping list' security flaw fixed])https://www.bbc.co.uk/news/technology-30686697)
+3. [Immobilise: 'Burglar's shopping list' security flaw fixed](https://www.bbc.co.uk/news/technology-30686697)
 
 Thanks for reading and I hope you enjoyed the talk!
