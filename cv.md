@@ -17,7 +17,7 @@ A software tester who believes that quality should be baked in, not sprinkled on
 
 Testers at BJSS don't just find bugs and raise defects, we ensure the continued delivery of predictable and robust software. We ask questions, promote testability, drive continuous improvement, and help nurture a mature testing culture across engagements.
 
-I also help grow BJSS's internal and external assurance capability, which includes squad leadership, recruitment, project coaching, and speaking at events.
+I also help grow BJSS’s internal and external Test & Assurance capability, which includes squad leadership, recruitment, project coaching, and speaking at events across the UK.
 
 
 ## Tester, Sparkol (Bristol)
@@ -37,9 +37,7 @@ An abbreviated list of my responsibilities includes: peer reviewing, pair progra
 
 [Hargreaves Lansdown](https://hl.co.uk/) is one of the UK’s biggest financial services companies and focuses on giving the best service, the best value, and the best information to investors.
 
-Starting as a Tester, my hard work led to me being promoted to Test Lead after two years. From there I helped manage a team of around forty other testers, but mainly focused on a subteam of three that worked on mobile applications.
-
-My time at Hargreaves Lansdown was extremely formative as I learned from, and contributed to, an award-winning IT team. I pushed to introduce Appium in testing and for increased unit/integration testing to be included in new projects, which led to a marked decrease in regression testing time and features making into customer’s hands faster.
+Test Lead for the company's external/internal mobile applications. I mainly focused on popularising "shift-left testing" during one of the company's pioneer agile projects.
 
 ## Tech
 
@@ -49,4 +47,4 @@ That being said, I have implemented so-called “full stack” automation in tes
 
 ## Personal
 
-I am a garden-variety nerd. I enjoy comic books, video games, and wearing tropical shirts. My favorite testing blogs are [Ministry of Testing](https://www.ministryoftesting.com/) and [Senor Performo](https://www.srperf.com/) and my favorite testing books are [How Google Tests Software](https://www.amazon.co.uk/Google-Tests-Software-James-Whittaker/dp/0321803027) and [Fifty Quick Ideas to Improve your Tests,](https://www.amazon.co.uk/Fifty-Quick-Ideas-Improve-Tests/dp/0993088112/) unless we’re talking fiction in which case I’m a big fan of the Discworld series (especially [Thief of Time](https://www.amazon.co.uk/Thief-Time-Discworld-Novel-Novels/dp/0552167649/) and [Thud!](https://www.amazon.co.uk/Thud-Discworld-Novel-34-Novels/dp/055216769X/)).
+I am a garden-variety nerd. I enjoy comic books, video games, and tinkering with technology. My favorite testing blogs are [Ministry of Testing](https://www.ministryoftesting.com/) and [Senor Performo](https://www.srperf.com/) and my favorite testing books are [How Google Tests Software](https://www.amazon.co.uk/Google-Tests-Software-James-Whittaker/dp/0321803027) and [Fifty Quick Ideas to Improve your Tests,](https://www.amazon.co.uk/Fifty-Quick-Ideas-Improve-Tests/dp/0993088112/) unless we’re talking fiction in which case I’m a big fan of the Discworld series (especially [Thief of Time](https://www.amazon.co.uk/Thief-Time-Discworld-Novel-Novels/dp/0552167649/) and [Thud!](https://www.amazon.co.uk/Thud-Discworld-Novel-34-Novels/dp/055216769X/)).
