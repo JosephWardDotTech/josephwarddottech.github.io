@@ -7,7 +7,7 @@ tags: blog
 
 Confession time: I'm a thief. I'll steal anything valuable from anywhere I can find it. My job, my colleagues, even strangers. I'm an expert at hiding my loot, smuggling it from one place to the next. I'm also not going to stop. All I ask is that you hear me out before turning me in...
 
-If you've made it this far then don't panic! I am, of course, talking about ideas. I've stolen so many good ideas from so many places it's hard for me to remember where they come from. And, in a way, doesn't them my ideas at this point?
+If you've made it this far then don't panic! I am, of course, talking about ideas. I've stolen so many good ideas from so many places it's hard for me to remember where they come from. And, in a way, doesn't that make them my ideas at this point?
 
 It would be pointless for me to try and list everywhere I steal things from, but a shortlist includes:
 
