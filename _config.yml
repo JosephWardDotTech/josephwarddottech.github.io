@@ -61,7 +61,7 @@ author:
 #     url:               /cookies-policy/
 
 # This text will appear in a `<small>` tag in the footer of every page.
-copyright:             © Joseph Ward 2018-2019. All Rights Reserved.
+copyright:             © Joseph Ward 2018-2020. All Rights Reserved.
 
 # Format of the permalinks
 permalink:             /:categories/:year-:month-:day-:title/

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "test and assurance design"
+title: "Test and Assurance design"
 date: 2018-10-19 21:38
 tags: testing practice blog
 ---

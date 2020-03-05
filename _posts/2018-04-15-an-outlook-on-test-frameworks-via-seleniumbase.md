@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "An Outlook on Test Frameworks (via SeleniumBase)"
+title: "An outlook on test frameworks (via SeleniumBase)"
 date: 2018-04-15 19:51
 tags: selenium python blog
 ---

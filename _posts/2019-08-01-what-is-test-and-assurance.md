@@ -1,6 +1,6 @@
 ---
 layout: post
-title: What is Test & Assurance?
+title: What is test and assurance?
 date: 2019-08-01
 tags: blog testing
 ---
