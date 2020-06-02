@@ -12,7 +12,8 @@ Sometimes I write things in Slack conversationally that might be useful to refer
 There are some open source proxies for tools that don't appear to have one at first glance (like locust.io and artillery).
 
 locust: <https://github.com/zlorb/locust.replay>
-artillery: <https://github.com/artilleryio/recorder>
+
+artillery.io: <https://github.com/artilleryio/recorder>
 
 You could also use something like <https://github.com/Carlgege/HAR-JMX-JmeterConverter> to convert a HAR file into JMX if you don't want to set up the proxy for whatever reason. Plenty of options exist if you're willing to delve into open source software (and potentially work with something a bit out-of-date).
 
