@@ -5,13 +5,13 @@ date: 2020-06-29 08:26
 tags: blog
 ---
 
-How do I put this? Sometimes you've got to test. Not talk about testing, not plan testing, but get stuck in and add value as fast as possible. In this blog post I investigate the popular [restful-booker web service](https://github.com/mwinteringham/restful-booker). From first impressions to reviewing the shippable quality of the software. Let's assume I've dropped into a project at the eleventh hour, I know nothing about what's under test, and I've only got two hours. Let's see how it goes!
+How do I put this? Sometimes you’ve got to test. Not talk about testing, not agonise over planning, but get stuck into adding value as fast as possible. In this blog post I investigate the popular [restful-booker web service](https://github.com/mwinteringham/restful-booker). From first impressions to reviewing the shippable quality of the software. Let's assume I've dropped into a project at the eleventh hour, I know nothing about what's under test, and I've only got two hours. Let's see how it goes!
 
 # Test ideation
 
-I think mind maps are best used when talking in a group but I’m going to create one for test ideation out of habit and for readability. Alternatives could be physical notes, a action plan assembled from conversation with people around you, or simply letting this process happen more naturally from experience and familiarity with whatever's under test.
+I think mind maps are best used when talking in a group but I’m going to create one for test ideation out of habit and for readability. Alternatives could be physical notes, a action plan assembled from conversation with people already on the project, or simply letting this process happen more naturally from your own experience and familiarity with the type of thing under test.
 
-![Image of test ideation](https://josephward.tech/assets/img/image--001.png)
+![Mind map of test ideation](https://josephward.tech/assets/img/image--001.png)
 
 # Overall focus/themes
 
@@ -21,7 +21,7 @@ Using the above as a guide I have decided to focus my effort across these 2 hour
 2. **"Risk"** (measured against my gut feel on how this might be iterated on)
 3. **"Security"** (measured against exploitability of potential assets)
 
-My heuristics will no doubt be informed by a deeper look into any available oracles. I will also need to lean heavily on my own experience of testing these sorts of projects.
+My heuristics will no doubt be informed by a deeper look into any oracles I discover. I will also need to lean heavily on my own experience of testing these sorts of projects.
 
 I also plan to add the static analysis tool [istanbul nyc](https://github.com/istanbuljs/nyc) to the dev dependencies of my local copy of the project. The tool can assist me in quickly determining how much of the application code is covered by tests. It’s by no means a causal relationship, but the number of tests covering different parts of the application will help me identify potential problem stops (and not just “bugs” but potential opportunities for refactoring/improvement).
 
@@ -37,9 +37,9 @@ Now then... time to get stuck in.
 5. [nedb](https://github.com/louischatriot/nedb) is being used as an in-memory data store, which means as soon as the application stops running bookings will be lost
 6. counter in `models/booking.js` is just an incremented integer, meaning booking ids are predictable/guessable
 7. The docs are generated from comments and not tied to code, which means they may slip easily (probably not the best oracle?)
-8. Tests appear to have pretty good coverage (according to istanbul nyc) so are probably a more reliable oracle
-* Tests aren’t abstracted in a massively reusable way (e.g. by domain object)
-* Tests revealing some odd “intended behavior”, e.g. misused status codes a (201 back from a `DELETE`, arguably a 405 from `DELETE`ing something non-existent and not 404)
+8. Tests themselves do appear to have pretty good coverage (according to istanbul nyc) so are probably a more reliable oracle?
+* But tests aren’t abstracted in a massively reusable way (e.g. by domain object)
+* But tests revealing some odd “intended behavior”, e.g. misused status codes a (201 back from a `DELETE`, arguably a 405 from `DELETE`ing something non-existent and not 404)
 9. `responds with a subset of booking ids when searching for checkin and checkout date` seems a bit non-deterministic (passes sometimes, fails others) but I can’t figure out why (beforeEach hook should be blocking in the application/test code afaik due to the callback but maybe it’s not?)
 10. Payloads don’t seem to have any character limits?
 11. XSS injection opportunities (as no filtering is happening)?
@@ -49,6 +49,7 @@ Now then... time to get stuck in.
 14. Tests must have some inter-dependency somewhere, they aren’t consistently green when run out-of-order
 15. (picky) but parts of this wouldn’t pass up-to-date linting rules from a style POV as there are missing semicolons, var is used, etc.
 * Though sticking to a linter is good for readability/extendability anyway
+16. Some tests may be inter-dependent? (discovered by using rocha)
 
 # Conclusions
 ## Overall
@@ -77,7 +78,7 @@ Although I feel I probably missed quite a few functional issues in this applicat
 6. No clear “line of thought” about how this was developed, what problem it was trying to solve, who made business logic decisions, etc.
 7. Convenient access to some tool to make exploratory testing easier (e.g. a [postman](https://www.postman.com/) collection) may have made testing easier
 8. Testing seems focused on the highest level (actually taking CRUD actions), unit tests for logic are arguably a better place if the behavior will later be expanded (and some things should be possible to demonstrate without dependencies anyway)
-9 The tests that do exist are not abstracted (e.g. into domain objects), which would have made them more readable and more able to be extended
+9. The tests that do exist are not abstracted (e.g. into domain objects), which would have made them more readable and more able to be extended
 
 ## My recommendations for future operation, maintenance, and extension
 
