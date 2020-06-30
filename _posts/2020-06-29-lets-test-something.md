@@ -9,23 +9,24 @@ How do I put this? Sometimes you’ve got to test. Not talk about testing, not a
 
 # Test ideation
 
-I’m going to create a mind map for test ideation for readability. The point is to generate as many ideas as quickly as possible for inspiration for my investigation. I don't have anyone to collaborate with in order to dig into project specific details so will instead lean heavily on my own knowledge and experience of testing these kinds of web services.
+First I'll create a test ideation mind map. My goal is to generate as many questions for my investigation as quickly as possible. I can't collaborate with anyone to target project specifics so instead I'll lean on my own experiences with testing web services.
 
 ![Mind map of test ideation](https://josephward.tech/assets/img/image--001.png)
 
 # Overall focus/themes
 
-Using the above as a guide I have decided to focus my effort across these 2 hours on:
+Using the above as a guide I have will focus these 2 hours on:
 
-1. **"Correctness"** (measured against identified oracles)
-2. **"Risk"** (measured against my gut feel on how this might be iterated on)
-3. **"Security"** (measured against exploitability of potential assets)
+1. **"Correctness"** (measured against any identifiable oracles)
+2. **"Risk"** (measured against my professional experience)
+3. **"Security"** (measured against exploitability of assets)
 
-The information I gather on these topics will no doubt be informed by the availability of any oracles within the project itself and its innate testability.
+The intrinsic testability of this project will also help or hinder how productive I will be in these two hours.
 
-For tooling, I'll add the static analysis tool [istanbul nyc](https://github.com/istanbuljs/nyc) to the dev dependencies of my local copy of the project. It will aid me in quickly determining how much of the application code is covered by tests. It’s by no means a causal relationship, but the number of tests covering different parts of the application will help me identify potential problem stops (and not just “bugs” but potential opportunities for refactoring/improvement).
+As this project is using [mocha](https://mochajs.org/) as a test runner I have also identified two libraries that I will add to the dev dependencies of the project.
 
-As the tests are run using [mocha](https://mochajs.org/) I'll also add an extension called [rocha](https://github.com/bahmutov/rocha) to randomise the test order, this will give me some rudimentary impression on the efficacy of the tests as written. 
+1. [istanbuljs/nyc](https://github.com/istanbuljs/nyc): a static analysis tool used to track unit test coverage. While I have no prior knowledge of the efficacy of any existing tests, and there's no reason to suspect a causal relationship between lack of tests and bugs, knowing what the coverage looks like will certainly help focus my attention.
+2. [rocha](https://github.com/bahmutov/rocha): a helper for mocha that randomises test order. Using this tool will help me identify where the tests may be inter-dependent (and so I where be less likely to trust test results).
 
 Now then... time to get stuck in.
 
@@ -55,38 +56,32 @@ Now then... time to get stuck in.
 # Conclusions
 ## Overall
 
-If I were put in the position of investigating whether or not restful-booker was suitable for release as-is  I'd recommend **no**. While many of the issues I identified appeared to be minor there are deeper issues in how the application itself is configured/deployed. Observations **3**, **4**, **5**, **6**, **11**, and **13** in particular could lead to issues if this application were to be used commercially.
+I recommend restful-booker is **not** suitable for release at the current time due to my regarding how it would be deployed, improved upon, and kept secure. Observations **3**, **4**, **5**, **6**, **11**, and **13** in particular need deeper investigation.
 
 ## My approach
 
-I tried to focus testing around the three points identified in the “overall focus/themes” section, which were correctness, risk ,and security. For the most part, I tested by adjusting the `tests/spec.js` test file of the project itself due to the time constraints I imposed on myself.
+I focused testing on **correctness**, **risk** ,and **security**. I tested mostly by adjusting the `tests/spec.js` test file due to the time constraints.
 
-## My methodology
+## Assessing my approach
 
-Again, due to time constraints, I mostly used my own experience and the oracle of the existing tests to inform my methodology and guide heuristics. These included basic measurements such as “too big”, “different character sets”, “different inputs”, but at a higher level I used the static analysis tool istanbul nyc to identify where there may not be sufficient test coverage of behavior to identify potential problem spots. I also used tools like rocha to tell me when the tests may be presenting an inaccurate representation of behavior.
-
-## Assessing my methodology
-
-Although I feel I probably missed quite a few functional issues in this application (how could I not when the service is intended to be a technical testing bed) I feel I did a good job testing this application in real terms. For the most part the tests looked good at covering the “intended” behavior of the application, therefore the bugs were probably to be found in behaviors that a user wouldn’t be expected to do in most circumstances (i.e. edge cases). I instead focused my investigation on "deeper" issues, like whether or not this application was suitable to be released for a commercial purpose and, if it was, what the consequences of that might be in terms of iterating on it and the user’s security.
+Although probably missed quite a few functional issues (it's a testing target so there are probably lots of gotchas) I feel I did a good job testing the application in real terms. The unit tests looked adequate for the “happy bath”, therefore bugs were likely to be found in unexpected edge cases anyway. Instead, I focused my investigation on "deeper" issues, like whether or not this application was suitable for release commercially and, if it was, what the consequences of that might be.
 
 ## My recommendations for future development/testing
 
-1. Configuring a linter would have ensured code style was consistent.
-2. As this is JavaScript something like flow could have been configured for type checking (which would become relevant as the application gets bigger)
+1. Configuring a linter would have ensured code style was consistent
+2. [Flow](https://flow.org/) could be introduced for type checking
 3. Static analysis tools (like istanbul nyc) could have identified areas where test coverage could have been better
 4. Testing tools like rocha could have been introduced to identify inter-dependency of tests
 5. Bringing a tester in at the end of the process of releasing the application was of limited value (and expensive if any of the observations lead to rework)
 6. No clear “line of thought” about how this was developed, what problem it was trying to solve, who made business logic decisions, etc.
-7. Convenient access to some tool to make exploratory testing easier (e.g. a [postman](https://www.postman.com/) collection) may have made testing easier
-8. Testing seems focused on the highest level (actually taking CRUD actions), unit tests for logic are arguably a better place if the behavior will later be expanded (and some things should be possible to demonstrate without dependencies anyway)
-9. The tests that do exist are not abstracted (e.g. into domain objects), which would have made them more readable and more able to be extended
-
-## My recommendations for future operation, maintenance, and extension
-
-Some thought about implementing the suggestions in the previous answer would go a long way to helping with operability, maintainability, and extendibility. If nothing else I would particularly recommend suggestion 5, because the other suggestions may be considered to be symptoms of something like this as the root cause: conversations not happening earlier enough.
+7. Convenient access to some tool to make exploratory testing easier (e.g. a [postman](https://www.postman.com/) collection)
+8. Testing seems focused on the highest level (actually taking CRUD actions), unit tests for logic may be a better place if the behavior will later be expanded (and some things should be possible to demonstrate without dependencies anyway)
+9. The tests that do exist are not abstracted (e.g. into domain objects), which would have made them more readable
 
 ## Wrapping up
 
-Although the testing part of this exercise was timeboxed to 2 hours I did go over that amount when finalizing this post as I needed some time to fix typos and refactor my language.
+Although the exercise was timeboxed that did not include writing this blog post.
 
-I did consider going a bit “meta” in this analysis by messaging [Mark Winteringham](https://twitter.com/2bittester) (the author of this service) on twitter and asking about the roadmap for restful-booker (for use as an oracle). Ultimately, however, I decided against it because then I could also conceivable introduce twitter posts and blogs into scope (as well as any issues in the project’s GitHub), which would be problematic.
+I enjoy exercises like this. Restriction breeds creativity and a timebox prompted me to find ways of multiplying my effort and focusing that effort on priority issues.
+
+What do you think of the issues I raised? Did I miss anything obvious? What have you found in restful-booker? Please let me know via the available social links.
