@@ -9,19 +9,19 @@ How do I put this? Sometimes you’ve got to test. Not talk about testing, not a
 
 # Test ideation
 
-First I'll create a test ideation mind map. My goal is to generate as many questions for my investigation as quickly as possible. I can't collaborate with anyone to target project specifics so instead I'll lean on my own experiences with testing web services.
+First I’ll create a test ideation mind map. My goal is to generate as many questions for my investigation as quickly as possible. I can’t collaborate with anyone to target project specifics so instead I’ll lean on my own experiences with testing web services.
 
 ![Mind map of test ideation](https://josephward.tech/assets/img/image--001.png)
 
 # Overall focus/themes
 
-Using the above as a guide I have will focus these 2 hours on:
+Using the above as a guide I will focus these 2 hours on:
 
 1. **"Correctness"** (measured against any identifiable oracles)
 2. **"Risk"** (measured against my professional experience)
 3. **"Security"** (measured against exploitability of assets)
 
-The intrinsic testability of this project will also help or hinder how productive I will be in these two hours.
+The intrinsic testability of this project will also help or hinder how productive this session will be (which is why tester involvement in these conversations early is so important).
 
 As this project is using [mocha](https://mochajs.org/) as a test runner I have also identified two libraries that I will add to the dev dependencies of the project.
 
