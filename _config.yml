@@ -85,7 +85,7 @@ theme_color:           rgb(25,55,71)
 
 # The string encoding which fonts to fetch from Google Fonts.
 # See: <https://hydejack.com/docs/configuration/>
-google_fonts:          Permanent+Marker:400|Raleway:400,400i,700,700i
+google_fonts:          Bangers:400|Raleway:400,400i,700,700i
 
 # The text font. Expects a string that is a valid CSS font-family value.
 # To change font-weight, see _sass/variables.scss
@@ -93,7 +93,7 @@ font:                  Raleway, Helvetica, Arial, sans-serif
 
 # The font used for headings. Expects a string that is a valid CSS font-family value.
 # To change font-weight, see _sass/variables.scss
-font_heading:          Permanent Marker, Helvetica, Arial, cursive
+font_heading:          Bangers, Helvetica, Arial, cursive
 
 defaults:
   # `jekyll-seo-tag` will mark collection outputs as `BlogPosting`,
