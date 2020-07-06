@@ -1,30 +1,30 @@
-@font-face {
-    font-family: 'Comic-Note-Smooth';
-    src:url('/assets/fonts/Comic-Note-Smooth.ttf.woff') format('woff'),
-        url('/assets/fonts/Comic-Note-Smooth.ttf.svg#Comic-Note-Smooth') format('svg'),
-        url('/assets/fonts/Comic-Note-Smooth.ttf.eot'),
-        url('/assets/fonts/Comic-Note-Smooth.ttf.eot?#iefix') format('embedded-opentype'); 
-    font-weight: normal;
-    font-style: normal;
-}
+// @font-face {
+//     font-family: 'Comic-Note-Smooth';
+//     src:url('/assets/fonts/Comic-Note-Smooth.ttf.woff') format('woff'),
+//         url('/assets/fonts/Comic-Note-Smooth.ttf.svg#Comic-Note-Smooth') format('svg'),
+//         url('/assets/fonts/Comic-Note-Smooth.ttf.eot'),
+//         url('/assets/fonts/Comic-Note-Smooth.ttf.eot?#iefix') format('embedded-opentype'); 
+//     font-weight: normal;
+//     font-style: normal;
+// }
 
-.font-active h1, .font-active h2, .font-active h3, .font-active h4, .font-active h5, .font-active h6, .font-active .h1, .font-active .h2, .font-active .h3, .font-active .h4, .font-active .h5, .font-active .h6, .font-active .heading { 
-   font-family: 'Comic-Note-Smooth' !important;
-}  
+// .font-active h1, .font-active h2, .font-active h3, .font-active h4, .font-active h5, .font-active h6, .font-active .h1, .font-active .h2, .font-active .h3, .font-active .h4, .font-active .h5, .font-active .h6, .font-active .heading { 
+//    font-family: 'Comic-Note-Smooth' !important;
+// }  
 
-h1, .h1, .font-active h1, .font-active .h1 {
-    font-size: 2.5rem;
-    line-height: 1.3;
-}
+// h1, .h1, .font-active h1, .font-active .h1 {
+//     font-size: 2.5rem;
+//     line-height: 1.3;
+// }
 
-h2, .h2, .font-active h2, .font-active .h2 {
-    font-size: 2rem;
-}
+// h2, .h2, .font-active h2, .font-active .h2 {
+//     font-size: 2rem;
+// }
 
-.sidebar-nav-item, .heading, .related-posts, h4, .h4 {
-	font-size: 1.5rem;
-}
+// .sidebar-nav-item, .heading, .related-posts, h4, .h4 {
+// 	font-size: 1.5rem;
+// }
 
-time {
-	font-size: 1.25rem;
-}
+// time {
+// 	font-size: 1.25rem;
+// }
