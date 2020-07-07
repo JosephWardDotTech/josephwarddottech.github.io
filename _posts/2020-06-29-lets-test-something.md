@@ -9,7 +9,7 @@ How do I put this? Sometimes you’ve got to test. Not talk about testing, not a
 
 # Test ideation
 
-First I’ll create a test ideation mind map. My goal is to generate as many questions for my investigation as quickly as possible. I can’t collaborate with anyone to target project specifics so instead I’ll lean on my own experiences with testing web services.
+First, I’ll create a test ideation mind map. My goal is to generate as many questions for my investigation as quickly as possible. I can’t collaborate with anyone to target project specifics, so instead I’ll lean on my own experiences with testing web services.
 
 ![Mind map of test ideation](https://josephward.tech/assets/img/image--001.png)
 
@@ -25,16 +25,16 @@ The intrinsic testability of this project will also help or hinder how productiv
 
 As this project is using [mocha](https://mochajs.org/) as a test runner I have also identified two libraries that I will add to the dev dependencies of the project.
 
-1. [istanbuljs/nyc](https://github.com/istanbuljs/nyc): a static analysis tool used to track unit test coverage. While I have no prior knowledge of the efficacy of any existing tests, and there's no reason to suspect a causal relationship between lack of tests and bugs, knowing what the coverage looks like will certainly help focus my attention.
-2. [rocha](https://github.com/bahmutov/rocha): a helper for mocha that randomises test order. Using this tool will help me identify where the tests may be inter-dependent (and so I where be less likely to trust test results).
+1. [istanbuljs/nyc](https://github.com/istanbuljs/nyc): a static analysis tool used to track unit test coverage. While I do not know of the efficacy of any existing tests, and there’s no reason to suspect a causal relationship between lack of tests and bugs, knowing what the coverage looks like will help focus my attention.
+2. [rocha](https://github.com/bahmutov/rocha): a helper for mocha that randomises test order. Using this tool will help me identify where the tests may be interdependent (and so I where be less likely to trust test results).
 
 Now then... time to get stuck in.
 
 # Observations/questions
 
 1. npm audit did not reveal any dependency issues
-* **But** dependencies are configured to update to latest minor/patch version on `npm update` (and that’s not even considering dependencies of dependencies)
-2. No licence is specified in the package.json
+* **But** it configures dependencies to update to latest minor/patch version on `npm update` (and that’s not even considering dependencies of dependencies)
+2. No licence specified in the package.json
 3. Dockerfile line 26 runs `npm start`, which sets the `SEED` variable. `SEED` is looked up in line 11 of `routes/index.js` to add up to 10 pseudorandom bookings into the database when the applications starts?
 4. No obvious (to me) way to take the app out of development mode – how will anyone deploy this easily? Dive into code to see what to do?
 5. [nedb](https://github.com/louischatriot/nedb) is being used as an in-memory data store, which may mean as soon as the application stops running bookings will be lost?
@@ -44,7 +44,7 @@ Now then... time to get stuck in.
 * But tests aren’t abstracted in a massively reusable way (e.g. by domain object)
 * But tests revealing some odd “intended behavior”, e.g. misused status codes a (201 back from a `DELETE`, arguably a 405 from `DELETE`ing something non-existent and not 404)
 9. `responds with a subset of booking ids when searching for checkin and checkout date` seems a bit non-deterministic (passes sometimes, fails others) but I can’t figure out why (`beforeEach` hook should be blocking in the application/test code afaik due to the callback but maybe it’s not? need to check)
-10. Payloads don’t seem to have any character limits on service but what about db? 
+10. Payloads don’t seem to have any character limits on service, but what about db? 
 11. XSS injection opportunities (as no filtering is happening)?
 12. `/booking/:id` `PATCH` route not covered by any tests at all?
 * Could be issues here!
@@ -56,15 +56,15 @@ Now then... time to get stuck in.
 # Conclusions
 ## Overall
 
-I recommend restful-booker is **not** suitable for release at the current time due to my regarding how it would be deployed, improved upon, and kept secure. Observations **3**, **4**, **5**, **6**, **11**, and **13** in particular need deeper investigation.
+I recommend restful-booker is **not** suitable for release at the current time because of how it would be deployed, improved upon, and kept secure. Observations **3**, **4**, **5**, **6**, **11**, and **13** need deeper investigation.
 
 ## My approach
 
-I focused testing on **correctness**, **risk** ,and **security**. I tested mostly by adjusting the `tests/spec.js` test file due to the time constraints.
+I focused testing on **correctness**, **risk**, and **security**. I tested mostly by adjusting the `tests/spec.js` test file because of the time constraints.
 
 ## Assessing my approach
 
-Although probably missed quite a few functional issues (it's a testing target so there are probably lots of gotchas) I feel I did a good job testing the application in real terms. The unit tests looked adequate for the “happy bath”, therefore bugs were likely to be found in unexpected edge cases anyway. Instead, I focused my investigation on "deeper" issues, like whether or not this application was suitable for release commercially and, if it was, what the consequences of that might be.
+Although I probably missed quite a few functional issues (it’s a testing target so there are probably lots of gotchas) I feel I did a good job testing the application in actual terms. The unit tests looked adequate for the “happy bath”, therefore bugs were likely to be found in unexpected edge cases. Instead, I focused my investigation on “deeper” issues, like whether this application was suitable for release commercially and, if it was, what the consequences of that might be..
 
 ## My recommendations for future development/testing
 
@@ -80,7 +80,7 @@ Although probably missed quite a few functional issues (it's a testing target so
 
 ## Wrapping up
 
-Although the exercise was timeboxed that did not include writing this blog post.
+Although the exercise was time boxed, that did not include writing this blog post.
 
 I enjoy exercises like this. Restriction breeds creativity and a timebox prompted me to find ways of multiplying my effort and focusing that effort on priority issues.
 
