@@ -17,7 +17,7 @@ A software tester who believes that quality should be baked in, not sprinkled on
 
 Testers at BJSS don't just find bugs and raise defects, we ensure the continued delivery of predictable and robust software. We ask questions, promote testability, drive continuous improvement, and help nurture a mature testing culture across engagements.
 
-I also help grow BJSS’s internal and external Test & Assurance capability, which includes squad leadership, recruitment, project coaching, and speaking at events across the UK.
+I also help grow BJSS’s internal and external Test & Assurance capability, which includes squad leadership, recruitment, project coaching, security advocacy, and speaking at events across the UK.
 
 
 ## Tester, Sparkol (Bristol)
@@ -35,15 +35,23 @@ An abbreviated list of my responsibilities includes: peer reviewing, pair progra
 
 ***2013 -- 2016***
 
-[Hargreaves Lansdown](https://hl.co.uk/) is one of the UK’s biggest financial services companies and focuses on giving the best service, the best value, and the best information to investors.
+[Hargreaves Lansdown](https://hl.co.uk/) is one of the UK’s biggest financial services companies and aims to give the best service, the best value, and the best information to investors.
 
 Test Lead for the company's external/internal mobile applications. I mainly focused on popularising "shift-left testing" during one of the company's pioneer agile projects.
 
+## Data Enty Operator / Tester, Direct Line (Bristol)
+
+***2010 -- 2013***
+
+[Direct Line](https://www.directline.com/) is an insurance company within the UK.
+
+Originally a Data Entry Operator, I occasionally took the role of Tester for software designed to replace my role. A career change shortly followed.
+
 ## Tech
 
-I use whatever technology best solves the problem at hand, not a “golden hammer” or whatever’s “new and shiny”. My approach is based on reliable, tried and true software development principles and patterns.
+I use whatever technology best solves the problem at hand, not a “golden hammer” or whatever’s “new and shiny”. I base my approach on reliable, tried-and-true software development principles and patterns.
 
-That being said, I have implemented so-called “full stack” automation in testing using **Python**, **Ruby**, **JavaScript**, and **Java** not to mention countless supporting libraries. 
+That being said, I have implemented so-called “full stack” automation in testing using **Python**, **Ruby**, **JavaScript**, and **Java** not to mention countless supporting libraries.
 
 ## Personal
 
