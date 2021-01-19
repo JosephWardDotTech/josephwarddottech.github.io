@@ -5,30 +5,31 @@ date: 2020-06-29 08:26
 tags: blog
 ---
 
-How do I put this? Sometimes you’ve got to test. Not talk about testing, not agonise over planning, but get stuck into adding value as fast as possible. In this blog post I investigate the popular [restful-booker web service](https://github.com/mwinteringham/restful-booker). From first impressions to reviewing the shippable quality of the software. We'll imagine I've dropped into the project late, I know nothing about what's under test, and I've only got two hours. Let's see how it goes!
+How do I put this? Sometimes you’ve got to test. Not talk about testing, not agonise over planning, but get stuck into adding value as quickly as possible. In this blog post I investigate the popular [restful-booker web service](https://github.com/mwinteringham/restful-booker). From first impressions to reviewing the shippable quality of the software. Let’s imagine I’ve dropped into the project late, I know nothing about what’s under test, and I’ve only got two hours. We’ll see how it goes!
 
 # Test ideation
 
-First, I’ll create a test ideation mind map. My goal is to generate as many questions for my investigation as quickly as possible. I can’t collaborate with anyone to target project specifics, so instead I’ll lean on my own experiences with testing web services.
+First, I’ll create a test ideation mind map. My goal is to generate as many questions to investigate as quickly as possible. I can’t collaborate with anyone to target project specifics, so instead I’ll lean on my own experiences with testing web services.
 
 ![Mind map of test ideation](https://josephward.tech/assets/img/image--001.png)
 
 # Overall focus/themes
 
-Using the above as a guide I will focus these 2 hours on:
+Using the above as a guide, I will focus my 2 hours on:
 
 1. **"Correctness"** (measured against any identifiable oracles)
 2. **"Risk"** (measured against my professional experience)
 3. **"Security"** (measured against exploitability of assets)
 
-The intrinsic testability of this project will also help or hinder how productive this session will be (which is why tester involvement in these conversations early is so important).
+The intrinsic testability of this project will also help, or hinder, how productive this session will be (which is why tester involvement in these conversations early is so important).
 
-As this project is using [mocha](https://mochajs.org/) as a test runner I have also identified two libraries that I will add to the dev dependencies of the project.
+As this project is using [mocha](https://mochajs.org/) as a test runner, I have also identified two libraries that I will add to the dev dependencies of the project.
 
 1. [istanbuljs/nyc](https://github.com/istanbuljs/nyc): a static analysis tool used to track unit test coverage. While I do not know of the efficacy of any existing tests, and there’s no reason to suspect a causal relationship between lack of tests and bugs, knowing what the coverage looks like will help focus my attention.
+
 2. [rocha](https://github.com/bahmutov/rocha): a helper for mocha that randomises test order. Using this tool will help me identify where the tests may be interdependent (and so I where be less likely to trust test results).
 
-Now then... time to get stuck in.
+Time to get stuck in!
 
 # Observations/questions
 
@@ -56,15 +57,15 @@ Now then... time to get stuck in.
 # Conclusions
 ## Overall
 
-I recommend restful-booker is **not** suitable for release at the current time because of how it would be deployed, improved upon, and kept secure. Observations **3**, **4**, **5**, **6**, **11**, and **13** need deeper investigation.
+I recommend restful-booker is **not** suitable for release because of how it would be deployed, improved upon, and kept secure. Observations **3**, **4**, **5**, **6**, **11**, and **13** need deeper investigation.
 
 ## My approach
 
-I focused testing on **correctness**, **risk**, and **security**. I tested mostly by adjusting the `tests/spec.js` test file because of the time constraints.
+I focused testing on **correctness**, **risk**, and **security**. I tested mostly by adjusting the `tests/spec.js` test file because of time constraints.
 
 ## Assessing my approach
 
-Although I probably missed quite a few functional issues (it’s a testing target so there are probably lots of gotchas) I feel I did a good job testing the application in actual terms. The unit tests looked adequate for the “happy bath”, therefore bugs were likely to be found in unexpected edge cases. Instead, I focused my investigation on “deeper” issues, like whether this application was suitable for release commercially and, if it was, what the consequences of that might be..
+Although I probably missed quite a few functional bugs (it’s a testing target so there are probably lots of gotchas) I feel I did a good job testing the application in real terms. The unit tests looked adequate for the “happy path”, therefore issues were likely to be found in unusual edge cases. Instead, I focused my investigation on “deeper” issues, like whether the service was suitable for release commercially and, if it was, what the consequences might be..
 
 ## My recommendations for future development/testing
 
@@ -82,6 +83,6 @@ Although I probably missed quite a few functional issues (it’s a testing targe
 
 Although the exercise was time boxed, that did not include writing this blog post.
 
-I enjoy exercises like this. Restriction breeds creativity and a timebox prompted me to find ways of multiplying my effort and focusing that effort on priority issues.
+I enjoy exercises like this. Restriction breeds creativity and a time box prompted me to find ways of multiplying my effort and focusing that effort on priority issues.
 
-What do you think of the issues I raised? Did I miss anything obvious? What have you found in restful-booker? Please let me know via the available social links.
+What do you think of what I found? Did I miss anything obvious? Have you. investigated restful-booker? Please let me know via the available social links.
