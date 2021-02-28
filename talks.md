@@ -21,7 +21,7 @@ Discussing the benefits, and drawbacks, of snapshot testing with the example of 
 
 ## Hacking for Muggles (⚡️ talk)
 
-***2019**
+***2019***
 
 A brief introduction to the skills needed to identify, and exploit, security vulnerabilities. 
 
