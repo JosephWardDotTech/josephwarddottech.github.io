@@ -23,7 +23,7 @@ A whistle-stop tour of REST API testing, including basic concepts, tooling overv
 
 Discussing the benefits, and drawbacks, of snapshot testing with the example of REST API tests.
 
-![Snapshot Testing a REST API](./assets/img/test-talks/snapshot-testing.jpeg)
+![Snapshot Testing a REST API](./assets/img/test-talks/snapshot-testing.png)
 
 ## Hacking for Muggles (⚡️ talk)
 
