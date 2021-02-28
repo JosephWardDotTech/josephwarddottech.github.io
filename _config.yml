@@ -61,7 +61,7 @@ author:
 #     url:               /cookies-policy/
 
 # This text will appear in a `<small>` tag in the footer of every page.
-copyright:             © Joseph Ward 2018-2020. All Rights Reserved.
+copyright:             © Joseph Ward 2018-2021. All Rights Reserved.
 
 # Format of the permalinks
 permalink:             /:categories/:year-:month-:day-:title/
@@ -76,7 +76,7 @@ paginate_path:         /page-:num/
 
 # Sidebar image and theme color of the site.
 accent_image:          ./assets/img/blah.JPG
-accent_color:          rgb(229,57,53)
+accent_color:          rgb(203,29,36)
 
 # This is used for the `theme-color` meta tag,
 # which changes the background color of the browser UI in certain browsers.
