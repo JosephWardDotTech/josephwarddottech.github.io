@@ -7,7 +7,7 @@ hide_description: true
 menu: true
 ---
 
-I’m always working on talks that I think will interest the software testing community. I have also spoken as a panelist on tech debates. If any of these sound interesting for your local meetup, or if you're looking for a tester with strong opinions to join your discussion panel, then please get in touch.
+I’m always working on talks that I think will appeal to the software testing community. I’ve also spoken as a panelist on tech debates. If any of these sound interesting for your local meetup, or if you’re searching for a tester with strong opinions to join your panel, then please get in touch.
 
 ## REST for the Weary
 
@@ -21,7 +21,7 @@ A whistle-stop tour of REST API testing, including basic concepts, tooling overv
 
 ***2020***
 
-Talking about Testing Surgery, a planned meetup to teach local testers about automation in testing (sadly postponed due to COVID-19).
+Talking about Testing Surgery, a planned meetup to coach local testers about automation in testing (sadly delayed due to COVID-19).
 
 ![REST for the Weary](./assets/img/test-talks/testing-surgery.jpg)
 
@@ -37,7 +37,7 @@ Discussing the advantages, and disadvantages, of snapshot testing with the examp
 
 ***2019***
 
-A brief introduction to the skills needed to identify, and exploit, security vulnerabilities. 
+A concise introduction to the skills needed to identify, and exploit, security vulnerabilities.
 
 ## Are Programmers the Problem?
 
@@ -51,7 +51,7 @@ Panel member in a debate concerning ethics in the modern IT industry.
 
 ***2019***
 
-Answering the question "what is test & assurance?" using BJSS' capability culture as an example.
+Examining “what is test & assurance?” using BJSS’ capability culture as an example.
 
 ![What is Test & Assurance?](./assets/img/test-talks/owasp-talk.jpeg)
 
@@ -67,6 +67,6 @@ Introducing the OWASP Juice Shop and its usefulness as a technical testing bed.
 
 ***2018***
 
-An anecdote on the difference between learned knowledge and learned experience in software testing.
+A short story about the differences between knowledge and experience in software testing.
 
 ![Knowledge vs. Experience in Software Testing](./assets/img/test-talks/knowledge-vs-experience.jpg)
