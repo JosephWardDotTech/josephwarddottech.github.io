@@ -7,11 +7,13 @@ hide_description: true
 menu: true
 ---
 
+I’m always working on talks that I think will interest the software testing community. If one of these talks sounds interesting for your local meetup, then please get in touch.
+
 ## REST for the Weary
 
 ***2021***
 
-A whistle stop tour of REST API testing, includiing basic concepts, tooling ovverviews, example code, and benefits.
+A whistle-stop tour of REST API testing, including basic concepts, tooling overviews, example code, and benefits.
 
 ## Snapshot Testing a REST API 
 
@@ -29,7 +31,7 @@ A brief introduction to the skills needed to identify, and exploit, security vul
 
 ***2019***
 
-Answering the "what is test & assurance?" question using BJSS' capability culture as an exampl.
+Answering the question "what is test & assurance?" using BJSS' capability culture as an example.
 
 ## Squeezing the OWASP Juice Shop
 
