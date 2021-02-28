@@ -9,13 +9,13 @@ menu: true
 
 ## REST for the Weary
 
-***2021
+***2021***
 
 A whistle stop tour of REST API testing, includiing basic concepts, tooling ovverviews, example code, and benefits.
 
 ## Snapshot Testing a REST API 
 
-***2019**
+***2019***
 
 Discussing the benefits, and drawbacks, of snapshot testing with the example of REST API tests.
 
