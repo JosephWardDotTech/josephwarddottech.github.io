@@ -37,13 +37,15 @@ A brief introduction to the skills needed to identify, and exploit, security vul
 
 Answering the question "what is test & assurance?" using BJSS' capability culture as an example.
 
-## Squeezing the OWASP Juice Shop
+![What is Test & Assurance?](./assets/img/test-talks/owasp-talk.jpeg)
+
+## Beaten to a Pulp: pentesting the OWASP Juice Shop
 
 ***2019***
 
 Introducing the OWASP Juice Shop, an (intentionally) insecure web application, and its usefulness as a technical testing bed.
 
-![Squeezing the OWASP Juice Shop](./assets/img/test-talks/owasp-talk.jpeg)
+![Beaten to a Pulp: pentesting the OWASP Juice Shop](./assets/img/test-talks/beaten-to-a-pulp.jpeg)
 
 ## Knowledge vs. Experience in Software Testing (⚡️ talk)
 
