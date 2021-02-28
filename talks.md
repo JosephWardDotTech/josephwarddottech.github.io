@@ -7,7 +7,7 @@ hide_description: true
 menu: true
 ---
 
-I’m always working on talks that I think will interest the software testing community. If one of these talks sounds interesting for your local meetup, then please get in touch.
+I’m always working on talks that I think will interest the software testing community. I have also spoken as a panelist on tech debates. If any of these sound interesting for your local meetup, or if you're looking for a tester with strong opinions to join your discussion panel, then please get in touch.
 
 ## REST for the Weary
 
@@ -21,7 +21,7 @@ A whistle-stop tour of REST API testing, including basic concepts, tooling overv
 
 ***2019***
 
-Discussing the benefits, and drawbacks, of snapshot testing with the example of REST API tests.
+Discussing the advantages, and disadvantages, of snapshot testing with the example of REST API tests.
 
 ![Snapshot Testing a REST API](./assets/img/test-talks/snapshot-testing.png)
 
@@ -31,6 +31,14 @@ Discussing the benefits, and drawbacks, of snapshot testing with the example of 
 
 A brief introduction to the skills needed to identify, and exploit, security vulnerabilities. 
 
+## Are Programmers the Problem?
+
+***2019***
+
+Panel member in a debate concerning ethics in the modern IT industry. 
+
+![What is Test & Assurance?](./assets/img/test-talks/panel.jpeg)
+
 ## What is Test & Assurance?
 
 ***2019***
@@ -39,13 +47,13 @@ Answering the question "what is test & assurance?" using BJSS' capability cultur
 
 ![What is Test & Assurance?](./assets/img/test-talks/owasp-talk.jpeg)
 
-## Beaten to a Pulp: pentesting the OWASP Juice Shop
+## Squeezing the OWASP Juice Shop: pentesting an (intentionally) insecure webapp
 
 ***2019***
 
-Introducing the OWASP Juice Shop, an (intentionally) insecure web application, and its usefulness as a technical testing bed.
+Introducing the OWASP Juice Shop and its usefulness as a technical testing bed.
 
-![Beaten to a Pulp: pentesting the OWASP Juice Shop](./assets/img/test-talks/beaten-to-a-pulp.jpeg)
+![Squeezing the OWASP Juice Shop: pentesting an (intentionally) insecure webapp  ](./assets/img/test-talks/new-owasp.jpg)
 
 ## Knowledge vs. Experience in Software Testing (⚡️ talk)
 
