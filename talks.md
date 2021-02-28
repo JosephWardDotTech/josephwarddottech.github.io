@@ -15,12 +15,15 @@ I’m always working on talks that I think will interest the software testing co
 
 A whistle-stop tour of REST API testing, including basic concepts, tooling overviews, example code, and benefits.
 
+![REST for the Weary](./assets/img/test-talks/rest-for-the-weary.jpeg)
+
 ## Snapshot Testing a REST API 
 
 ***2019***
 
-Discussing the benefits, and drawbacks, of snapshot testing with the example of REST API tests. ![Image of myy REST for the Weary Talk](./assets/img/test-talks/rest-for-the-weary.jpeg)
+Discussing the benefits, and drawbacks, of snapshot testing with the example of REST API tests.
 
+![Snapshot Testing a REST API](./assets/img/test-talks/snapshot-testing.jpeg)
 
 ## Hacking for Muggles (⚡️ talk)
 
@@ -40,8 +43,12 @@ Answering the question "what is test & assurance?" using BJSS' capability cultur
 
 Introducing the OWASP Juice Shop, an (intentionally) insecure web application, and its usefulness as a technical testing bed.
 
+![Squeezing the OWASP Juice Shop](./assets/img/test-talks/owasp-talk.jpeg)
+
 ## Knowledge vs. Experience in Software Testing (⚡️ talk)
 
 ***2018***
 
 An anecdote on the difference between learned knowledge and learned experience in software testing.
+
+![Knowledge vs. Experience in Software Testing](./assets/img/test-talks/knowledge-vs-experience.jpg)
