@@ -17,6 +17,14 @@ A whistle-stop tour of REST API testing, including basic concepts, tooling overv
 
 ![REST for the Weary](./assets/img/test-talks/rest-for-the-weary.jpeg)
 
+## Testing Surgery (⚡️ talk)
+
+***2020***
+
+Talking about Testing Surgery, a planned meetup to teach local testers about automation in testing (sadly postponed due to COVID-19).
+
+![REST for the Weary](./assets/img/test-talks/testing-surgery.jpg)
+
 ## Snapshot Testing a REST API 
 
 ***2019***
