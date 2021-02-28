@@ -17,7 +17,7 @@ A software tester who believes that quality should be baked in, not sprinkled on
 
 Testers at BJSS don't just find bugs and raise defects, we ensure the continued delivery of predictable and robust software. We ask questions, promote testability, drive continuous improvement, and help nurture a mature testing culture across engagements.
 
-I also help grow BJSS’s internal and external Test & Assurance capability, which includes squad leadership, recruitment, project coaching, security advocacy, and speaking at events across the UK.
+I also help grow BJSS’ internal and external Test & Assurance capability, which includes squad leadership, recruitment, project coaching, security advocacy, and speaking at events across the UK.
 
 
 ## Tester, Sparkol (Bristol)
