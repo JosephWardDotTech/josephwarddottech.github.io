@@ -7,7 +7,7 @@ hide_description: true
 menu: true
 ---
 
-I’m always working on talks that I think will appeal to the software testing community. I’ve also spoken as a panelist on tech debates. If any of these sound interesting for your local meetup, or if you’re searching for a tester with strong opinions to join your panel, then please get in touch.
+As a speaker, I prepare talks that I think will appeal to the software testing community. I also participate in debates about technology. Please get in touch if any of these sound interesting for your local meetup, or if you're looking for a tester who can add some strong opinions to your panel.
 
 ## REST for the Weary
 
