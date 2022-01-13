@@ -2,14 +2,14 @@
 layout: page
 title: CV
 description: >
-  CV of Joseph Ward, Tester at BJSS. 
+  CV of Joseph Ward, Capability Lead at BJSS. 
 hide_description: true
 menu: true
 ---
 
 A software tester who believes that quality should be baked in, not sprinkled on, and an advocate of asking the right questions at the right time to manage risk, save money, and cut time to delivery.
 
-## Tester, BJSS (Bristol)
+## Tester then Capability Lead, BJSS (Bristol)
 
 ***2017 -- Now***
 
@@ -51,7 +51,7 @@ Originally a Data Entry Operator, I occasionally took the role of Tester for sof
 
 I use whatever technology best solves the problem at hand, not a “golden hammer” or whatever’s “new and shiny”. I base my approach on reliable, tried-and-true software development principles and patterns.
 
-That being said, I have implemented so-called “full stack” automation in testing using **Python**, **Ruby**, **JavaScript**, and **Java** not to mention countless supporting libraries.
+That being said, I have implemented so-called “full stack” automation in testing using **C#**, **Python**, **Ruby**, **JavaScript**, and **Java** not to mention countless supporting libraries.
 
 ## Personal
 
