@@ -49,10 +49,10 @@ Originally a Data Entry Operator, I occasionally took the role of Tester for sof
 
 ## Tech
 
-I use whatever technology best solves the problem at hand, not a “golden hammer” or whatever’s “new and shiny”. I base my approach on reliable, tried-and-true software development principles and patterns.
+I use whatever technology best solves the problem at hand, not a golden hammer or whatever’s new and shiny. I base my approach on reliable, tried-and-true software development principles and patterns.
 
-That being said, I have implemented so-called “full stack” automation in testing using **C#**, **Python**, **Ruby**, **JavaScript**, and **Java** not to mention countless supporting libraries.
+That being said, I have implemented so-called “full stack” automation in testing using **C#**, **Python**, **Ruby**, **JavaScript**, and **Java**, not to mention countless supporting libraries.
 
 ## Personal
 
-I am a garden-variety nerd. I enjoy comic books, video games, and tinkering with technology. My favorite testing blogs are [Ministry of Testing](https://www.ministryoftesting.com/) and [Senor Performo](https://www.srperf.com/) and my favorite testing books are [How Google Tests Software](https://www.amazon.co.uk/Google-Tests-Software-James-Whittaker/dp/0321803027) and [Fifty Quick Ideas to Improve your Tests,](https://www.amazon.co.uk/Fifty-Quick-Ideas-Improve-Tests/dp/0993088112/) unless we’re talking fiction in which case I’m a big fan of the Discworld series (especially [Thief of Time](https://www.amazon.co.uk/Thief-Time-Discworld-Novel-Novels/dp/0552167649/) and [Thud!](https://www.amazon.co.uk/Thud-Discworld-Novel-34-Novels/dp/055216769X/)).
+I'm a garden-variety nerd who enjoys comic books, video games, and tinkering with technology. My favorite testing blogs are [Ministry of Testing](https://www.ministryoftesting.com/) and [Senor Performo](https://www.srperf.com/) and my favorite testing books are [How Google Tests Software](https://www.amazon.co.uk/Google-Tests-Software-James-Whittaker/dp/0321803027) and [Fifty Quick Ideas to Improve your Tests,](https://www.amazon.co.uk/Fifty-Quick-Ideas-Improve-Tests/dp/0993088112/) unless we’re talking fiction in which case I’m a big fan of the Discworld series (especially [Thief of Time](https://www.amazon.co.uk/Thief-Time-Discworld-Novel-Novels/dp/0552167649/) and [Thud!](https://www.amazon.co.uk/Thud-Discworld-Novel-34-Novels/dp/055216769X/)).
