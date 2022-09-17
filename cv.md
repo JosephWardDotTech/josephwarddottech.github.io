@@ -9,15 +9,17 @@ menu: true
 
 A software tester who believes that quality should be baked in, not sprinkled on, and an advocate of asking the right questions at the right time to manage risk, save money, and cut time to delivery.
 
-## Tester then Capability Lead, BJSS (Bristol)
+## Consultant Software Tester, BJSS (Bristol)
 
 ***2017 -- Now***
 
 [BJSS](https://bjss.com/) is the UK’s leading privately held IT and business consultancy.
 
-Testers at BJSS don't just find bugs and raise defects, we ensure the continued delivery of predictable and robust software. We ask questions, promote testability, drive continuous improvement, and help nurture a mature testing culture across engagements.
+Testers at BJSS don’t just find bugs and raise defects, we ensure the continued delivery of predictable and robust software. We ask questions, promote testability, drive continuous improvement, and help nurture a mature testing culture across engagements.
 
-I also help grow BJSS’ internal and external Test & Assurance capability, which includes squad leadership, recruitment, project coaching, security advocacy, and speaking at events across the UK.
+**Clients:** Betting and Gaming Company, Building Materials Company, Building Society, Financial Services Comparison Provider, Non-Departmental Public Body, Government Agency
+
+**Roles:** Lead Test Manager, MLOps Software Tester, Software Development Engineer in Test (SDET), Testability Architect, Testing Coach, Senior Software Tester
 
 
 ## Tester, Sparkol (Bristol)
