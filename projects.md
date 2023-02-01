@@ -17,7 +17,7 @@ Lead Test Manager for multiple projects of a Betting and Gaming Company.
 
 Strategic leadership, building communities of practice, enabling testing success, recruitment, resourcing, and relationship management with senior client stakeholders.
 
-*Technologies used: C#, GoLang, TypeScript, Cypress, GoDog, Kafka, Selenium*
+*Technologies used: C#, GoLang, TypeScript, Cypress, GitLab Pipelines, GoDog, Kafka, Selenium*
 
 ## Software Tester, Building Materials Comany
 
@@ -27,7 +27,7 @@ Software Tester for the Tools Platform project of a Building Materials Company.
 
 Development, testing, and release of a new, global application. Refactoring of existing software into a unified "Tools Platform" to benefit future development.
 
-*Technologies used: C#, TypeScript, Azure DevOps, Cypress, Enzyme, React, React Testing Library, Selenium, Specflow, Playwright*
+*Technologies used: C#, TypeScript, Azure Pipelines, Cypress, Enzyme, React, React Testing Library, Selenium, Specflow, Playwright*
 
 ## Consultant, Building Society
 
@@ -37,7 +37,7 @@ Consultant for the Test Enablement project of a Building Society.
 
 Good practice consultancy, development of reporting and integration pipeline infrastructure, coaching incumbent team, test engineering, and testability architect.
 
-*Technologies used: C#, ASP.NET, Azure DevOps, JMeter, Mule, RestSharp, Selenium*
+*Technologies used: C#, ASP.NET, Azure Pipelines, JMeter, Mule, RestSharp, Selenium*
 
 ## Software Tester, Financial Services Comparison Provider
 
@@ -47,7 +47,7 @@ Software Tester for the lift and shift of a financial services comparison provid
 
 Testing across the entire machine learning pipeline, from data exploration to model integration. Automation support and coaching for the current QA team.
 
-*Technologies used: Python (Anaconda), Apache Spark (PySpark), Azure DevOps, Databricks, Databricks Connect, Pandas, Pytest, SQL Management Studio*
+*Technologies used: Python (Anaconda), Apache Spark (PySpark), Azure Pipelines, Databricks, Databricks Connect, Pandas, Pytest, SQL Management Studio*
 
 ## Senior Software Tester, Non-Departmental Public Body
 
@@ -57,7 +57,7 @@ Senior Software Tester for the agile project delivery of a non-departmental publ
 
 Testing GDS frontend and REST API middleware, consultancy and training to incumbent QA team, and performance testing backend SaaS configuration.
 
-*Technologies used: TypeScript, Cucumber, Azure DevOps, Enzyme, JAX-RS, Jest, JMeter, JSForce, React, Request, Selenium*
+*Technologies used: TypeScript, Cucumber, Azure Pipelines, Enzyme, JAX-RS, Jest, JMeter, JSForce, React, Request, Selenium*
 
 ## Senior Software Tester, Government Agency
 
