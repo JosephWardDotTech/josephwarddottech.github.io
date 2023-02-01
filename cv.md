@@ -9,7 +9,7 @@ menu: true
 
 A software tester who believes that quality should be baked in, not sprinkled on, and an advocate of asking the right questions at the right time to manage risk, save money, and cut time to delivery.
 
-For a more detailed breakdown of my project history at BJSS, please click [here]({% post_url projects %})
+For a more detailed breakdown of my project history at BJSS, please click [here](https://josephward.tech/projects/).
 
 ## Consultant Software Tester, BJSS (Bristol)
 
