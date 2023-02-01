@@ -49,7 +49,7 @@ Testing across the entire machine learning pipeline, from data exploration to mo
 
 *Technologies used: Python (Anaconda), Apache Spark (PySpark), Azure DevOps, Databricks, Databricks Connect, Pandas, Pytest, SQL Management Studio*
 
-##Senior Software Tester, Non-Departmental Public Body
+## Senior Software Tester, Non-Departmental Public Body
 
 ***11/19 -- 09/20***
 
@@ -59,7 +59,7 @@ Testing GDS frontend and REST API middleware, consultancy and training to incumb
 
 *Technologies used: TypeScript, Cucumber, Azure DevOps, Enzyme, JAX-RS, Jest, JMeter, JSForce, React, Request, Selenium*
 
-##Senior Software Tester, Government Agency
+## Senior Software Tester, Government Agency
 
 ***07/17 -- 10/19***
 
