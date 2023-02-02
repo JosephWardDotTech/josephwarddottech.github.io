@@ -7,7 +7,7 @@ hide_description: true
 menu: false
 ---
 
-Throughout my career at BJSS, I've worked on many projects, across multiple industries, using several technologies. A more detailed description of that experience can be found on this page.
+I have worked on many projects with BJSS, across a wide range of industries and technologies. This page provides a more detailed description of that experience.
 
 ## Lead Test Manager, Betting and Gaming Company
 
@@ -25,7 +25,7 @@ Strategic leadership, building communities of practice, enabling testing success
 
 Software Tester for the Tools Platform project of a Building Materials Company.
 
-Development, testing, and release of a new, global application. Refactoring of existing software into a unified "Tools Platform" to benefit future development.
+Development, testing, and release of a new, global application. Refactoring existing components into a unified library to benefit future development.
 
 *Technologies used: C#, TypeScript, Azure Pipelines, Cypress, Enzyme, React, React Testing Library, Selenium, Specflow, Playwright*
 
