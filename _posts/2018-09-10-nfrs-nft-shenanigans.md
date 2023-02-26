@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "the 'non-functional' problem"
+title: "Why We Should Stop Using 'Non-Functional' to Describe Important Aspects of Software"
 date: 2018-09-10 13:38
 tags: blog testing
 ---
