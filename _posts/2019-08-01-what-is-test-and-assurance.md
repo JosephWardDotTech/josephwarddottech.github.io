@@ -7,7 +7,7 @@ tags: blog testing
 
 Please note: I originally wrote this post for [BJSS](https://bjss.com)’ internal blogosphere. If you find this interpretation of what role testers play in software delivery appealing, then please get in touch. We may have a job waiting for you.
 
-## Preamble
+## Introduction
 This article is pretty much about building, and growing, a [modern testing capability](https://moderntesting.org). My premise is that software testing will continue to grow, change, and that it’s not just a vocation but a craft.
 
 Our greatest strength is our test community's vibrant and diverse skills, backgrounds, and opinions. As coaches and collaborators, inspiring, supporting, and challenging everyone can be time-consuming. How do we continue to grow and hone our skills simultaneously?
@@ -55,4 +55,4 @@ We all know the [Agile Manifesto](https://agilemanifesto.org/) and If we accept 
 Actions that aim to follow a manifesto like this can happen anywhere not just by testers, and not just at the end. Embracing that is going to be part of what forms this mature assurance culture.
 
 ## Implementing a Pragmatic Testing Manifesto
-we need heuristics but also a methodology. The best one I have ever seen is this: [The Way of Testivus: Less Unit Testing Dogma, More Unit Testing Karma](https://web.archive.org/web/20170908010541/http:/www.agitar.com/downloads/TheWayOfTestivus.pdf). If you read and understand it everything becomes a lot clearer.
+In order to improve our approach to testing, it is important to have both heuristics and a methodology. One highly effective methodology that I have come across is [The Way of Testivus: Less Unit Testing Dogma, More Unit Testing Karma](https://web.archive.org/web/20170908010541/http:/www.agitar.com/downloads/TheWayOfTestivus.pdf). By reading this, many aspects of testing can become significantly clearer.
