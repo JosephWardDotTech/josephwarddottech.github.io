@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Injecting JavaScript for testability"
+title: ""Exploring the Power and Pitfalls of JavaScript Injection for Web Testing"
 date: 2018-07-09 09:51
 featured_image: 
 code: true
@@ -48,7 +48,7 @@ var someNumber = 0;
 
 var _sendRequest = sendRequest;
 sendRequest = function() {
-  _sendRequest;
+  _sendRequest();
   someNumber++;
 };
 ~~~
