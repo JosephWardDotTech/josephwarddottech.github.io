@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "An outlook on test frameworks (via SeleniumBase)"
+title: "SeleniumBase vs. Vanilla Selenium: Which One Should You Choose for Your Testing Needs?"
 date: 2018-04-15 19:51
 tags: selenium python blog
 ---
