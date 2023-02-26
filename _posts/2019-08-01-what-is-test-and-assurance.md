@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Building and Growing a Modern Testing Capability: A Testing Manifesto for Success
+title: "Building and Growing a Modern Testing Capability: A Testing Manifesto for Success"
 date: 2019-08-01
 tags: blog testing
 ---
