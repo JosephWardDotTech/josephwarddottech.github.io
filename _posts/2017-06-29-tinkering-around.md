@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Tinkering around"
+title: "The Power of Tinkering: How a Little Curiosity Can Lead to Big Achievements in Software Testing"
 date: 2017-06-29 22:56
 tags: learning blog
 ---
