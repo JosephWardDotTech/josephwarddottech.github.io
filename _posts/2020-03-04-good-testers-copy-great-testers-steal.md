@@ -1,9 +1,11 @@
 ---
 layout: post
-title: "Good testers copy, great testers steal"
+title: "Confessions of a Idea Thief: Embracing the Art of Stealing Inspiration"
 date: 2020-03-04 13:01
 tags: blog
 ---
+
+Good ~~artists~~ software testers copy, great ~~artists~~ software testers steal." - ~~Pablo Picasso~~ Joseph Ward
 
 Confession time: I'm a thief. I'll steal anything valuable from anywhere I can find it. My job, my colleagues, even strangers. I'm an expert at hiding my loot, smuggling it from one place to the next. I'm also not going to stop. All I ask is that you hear me out before turning me in...
 
