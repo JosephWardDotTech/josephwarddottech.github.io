@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Test and Assurance design"
+title: "Lessons Learned: Revisiting Test and Assurance Design for Past Projects"
 date: 2018-10-19 21:38
 tags: testing practice blog
 ---
