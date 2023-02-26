@@ -1,6 +1,6 @@
 ---
 layout: post
-title: ""Exploring the Power and Pitfalls of JavaScript Injection for Web Testing"
+title: "Exploring the Power and Pitfalls of JavaScript Injection for Web Testing"
 date: 2018-07-09 09:51
 featured_image: 
 code: true
