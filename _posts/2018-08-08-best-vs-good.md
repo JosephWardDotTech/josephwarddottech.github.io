@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Best practices vs. good practices in software testing"
+title: "Why 'Good Practices' Trump 'Best Practices' in Test Design"
 date: 2018-08-08 00:03
 tags: testing practice blog
 ---
