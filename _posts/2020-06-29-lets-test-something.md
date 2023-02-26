@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Let's test something"
+title: "Lessons Learned from Testing Restful-Booker: A 2-hour Deep Dive into a Web Service"
 date: 2020-06-29 08:26
 tags: blog
 ---
