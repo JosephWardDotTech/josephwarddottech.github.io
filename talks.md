@@ -9,7 +9,7 @@ menu: true
 
 As a speaker, I prepare talks that I think will appeal to the software testing community. I also participate in debates about technology. Please get in touch if any of these sound interesting for your local meetup, or if you're looking for a tester who can add some strong opinions to your panel.
 
-## REST for the Weary
+## Introduction to REST Testing: A Beginner's Guide
 
 ***2021***
 
