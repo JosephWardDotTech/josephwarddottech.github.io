@@ -2,7 +2,7 @@
 layout: post
 title: "Green Testing: Measuring and Reducing Your Software's Energy Use and Emissions"
 date: 2023-04-07 21:10
-tags: testing sustainability
+tags: blog testing sustainability
 ---
 
 In addition to verifying software functionality, testing is where we assure that we meet our non-functional needs. If we treat emissions as a non-functional need, is it an appropriate place to hold ourselves accountable for our software's energy use and emissions?
