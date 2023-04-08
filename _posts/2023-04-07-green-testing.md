@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Green Testing: Measuring and Reducing Your Software's Energy Use and Emissions"
-date: 2023-04-07 21:10
+date: 2023-04-07 12:00
 tags: blog testing sustainability
 ---
 
