@@ -1,20 +1,23 @@
 ---
 layout: post
 title: "Designing a Sub-1kb Homepage: A Challenge in Imagination and Purposeful Coding Approach"
-date: 2023-05-02 13:00
+date: 2023-05-29 13:00
 tags: blog
 ---
 
-## Introduction
 I designed a homepage under 1kB recently. Although I reverted it after a few weeks, I decided to write a blog post on why I made it and the reason behind my decisions.
 
-From [its website](https://1kb.club/): the 1kB Club is a list of web pages weighing less than 1 kilobyte (1,024 bytes). Similar to [Code Golf](https://code.golf/), the challenge is to achieve the maximum outcome with the least amount of code. I'm intrigued by challenges like this because they inspire individuals to be imaginative when tackling the task within set limitations, resulting in a refined and purposeful coding approach. Like the lean and uncluttered writing style of Hemmingway, but in code.
+From [its website](https://1kb.club/): the 1kB Club is a list of web pages weighing less than 1 kilobyte (1,024 bytes). Similar to [Code Golf](https://code.golf/), the challenge is to achieve the maximum outcome with the least amount of code.
+
+I'm intrigued by challenges like this because they inspire individuals to be imaginative when tackling the task within set limitations, resulting in a refined and purposeful coding approach. Like the lean and uncluttered writing style of Hemmingway, but in code.
 
 Anyway! This is what I came up with.
 
 ## The design
 ~~~html
-<!DOCTYPE html><link rel="icon" href="data:,"><meta name="viewport" content="width=device-width,initial-scale=1"><title>josephward.tech</title><pre> <style>html{max-width:70ch;padding:3em 1em;margin:auto;line-height:1.75;font-size:1em}</style>
+<!DOCTYPE html><link rel="icon" href="data:,"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>josephward.tech</title><pre> <style>html{max-width:70ch;padding:3em 1em;margin:auto;line-height:1.75;font-size:1em}
+</style>
 
 👋 <b>hello, i'm joseph ward</b>
 ✉️ <a href="mailto:joseph@josephward.tech">email</a>
