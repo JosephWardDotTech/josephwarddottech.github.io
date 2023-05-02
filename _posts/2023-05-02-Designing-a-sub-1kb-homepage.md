@@ -56,7 +56,9 @@ You can see how this looks by [clicking here](https://josephward.tech/1kb.html).
 <meta name="viewport" content="width=device-width,initial-scale=1">
 ~~~
 
-The viewport meta tag instructs the browser on how to display the web page on devices with varying screen sizes and resolutions. The width=device-width, initial-scale=1 attribute sets the width of the viewport to the width of the device, which allows the website to scale to fit the screen. The initial-scale=1 attribute sets the default zoom level for the page when it is first loaded, ensuring that the website appears at its actual size. This attribute is important because users can change their browser's default zoom level, and different devices have varying pixel densities, which can affect how the website is displayed. It's amazing how much of a difference that `viewport` meta tag makes for mobile browsing. Props to people who make websites work on tiny screens!
+The `viewport` meta tag instructs the browser on how to display the web page on devices with varying screen sizes and resolutions. The `width=device-width`, `initial-scale=1` attribute sets the width of the viewport to the width of the device, which allows the website to scale to fit the screen. The `initial-scale=1` attribute sets the default zoom level for the page when it is first loaded, ensuring that the website appears at its actual size. This attribute is important because users can change their browser's default zoom level, and different devices have varying pixel densities, which can affect how the website is displayed.
+
+It's amazing how much of a difference that `viewport` meta tag makes for mobile browsing. Props to people who make websites work on tiny screens!
 
 ~~~html
 <style>html{max-width:70ch;padding:3em 1em;margin:auto;line-height:1.75;font-size:1em}</style>
@@ -97,7 +99,8 @@ You can see that I am no longer using a basic, lightweight website. It was a use
 1. _I wasn't satisfied with how my blog posts were presented._ My goal is to make it easy for people to read and engage with my content. Switching domains and searching for a post required too many extra steps. Also, GitHub's markdown file preview doesn't show the blog post's text, which a specialized static site blog generator like Hydejack does.
 2. _The idea was very niche._ I enjoyed the challenge of making a website that was only 1 kilobyte in size, which is what the 1kb club is all about. However, to appreciate it, you have to explain what the 1kb club is. Some people might think the simple design is lazy or unprofessional, which is not what I wanted.
 3. _I couldn't track page visits anymore._ My landing page was too big to include a Google Analytics tracking link without going over 1kb, and using GitHub for my blog means I can't track clicks either. Even though not many people visit my blog, I would still like to track page views. 
-4. _Eventually, I got bored._ Simply put, I ran out of ideas for trimming characters making my homepage even simpler after a few weeks. It's funny because I can think of a few more ideas now!
+4. _Limited options for social sharing using GitHub._ I don't really have a platform. Sharing blogs on social media (including testing Slack groups) is about all I do. GitHub links don't have great social meta tags and my homepage had none! This made is very annoying to share.
+5. _Eventually, I got bored._ Simply put, I ran out of ideas for trimming characters making my homepage even simpler after a few weeks. It's funny because I can think of a few more ideas now!
 
 ## Conclusion
 
