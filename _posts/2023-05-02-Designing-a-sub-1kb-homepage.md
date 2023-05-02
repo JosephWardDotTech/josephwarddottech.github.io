@@ -43,7 +43,7 @@ tech: js/ts/python/c#/java/whatever works
 
 ~~~
 
-You can see how this looks by [clicking here]().
+You can see how this looks by [clicking here](https://josephward.tech/1kb.html).
 
 ## Breaking things down
 ~~~html
