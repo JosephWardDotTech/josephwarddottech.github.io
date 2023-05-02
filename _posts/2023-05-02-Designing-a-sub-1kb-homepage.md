@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Designing a Sub-1kb Homepage: A Challenge in Imagination and Purposeful Coding Approach"
-date: 2023-05-29 13:00
+date: 2023-05-02
 tags: blog
 ---
 
