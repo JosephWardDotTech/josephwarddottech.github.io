@@ -2,7 +2,7 @@
 layout: page
 title: CV
 description: >
-  CV of Joseph Ward, Capability Lead at BJSS. 
+  CV of Joseph Ward, Consultant Software Tester at BJSS. 
 hide_description: true
 menu: true
 ---
