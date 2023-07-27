@@ -17,6 +17,6 @@ I took inspiration from many sources more intelligent and eloquent than me when 
 
 [The Way of Testivus](https://web.archive.org/web/20170908010541/http://www.agitar.com/downloads/TheWayOfTestivus.pdf)
 
-[Good and Bad UI Test Automation explained – Inspired by Richard Bradshaw’s Tweets](https://www.kenst.com/2018/06/good-and-bad-ui-test-automation-explained-inspired-by-richard-bradshaws-tweets/)
+[Good and Bad UI Test Automation explained – Inspired by Richard Bradshaw’s Tweets](https://web.archive.org/web/20210802122202/https://www.kenst.com/2018/06/good-and-bad-ui-test-automation-explained-inspired-by-richard-bradshaws-tweets/)
 
-[Writing Clean Tests – It Starts From the Configuration](https://www.petrikainulainen.net/programming/testing/writing-clean-tests-it-starts-from-the-configuration/)
+[Writing Clean Tests – It Starts From the Configuration](https://web.archive.org/web/20220514060849/https://www.petrikainulainen.net/programming/testing/writing-clean-tests-it-starts-from-the-configuration/)
