@@ -9,9 +9,25 @@ menu: false
 
 I have worked on many projects with BJSS, across a wide range of industries and technologies. This page provides a more detailed description of that experience.
 
+## Software Development Engineer in Test (SDET), Statutory Corporation
+
+***11/23 -- Now***
+
+SDET for the Application Beta Delivery of a Statutory Corporation. Test engineering, buddy mentoring, etc.
+
+*Technologies used: C#, TypeScript, BrowserStack, ESLint, Jest, JMeter, MSTest, Next.js, Ninject, React, RestSharp, Selenium, Stryker Mutator, Wiremock, Zustand*
+
+## SDET, Global Airline
+
+***10/23 -- 11/23***
+
+SDET for the release hardening activities of a Global Airline. Short-term engagement to ensure the delivery of a key account milestone.
+
+*Technologies used: JavaScript, TypeScript, Argo, DataDog, GitHub Actions, Playwright, Wiremock*
+
 ## Lead Test Manager, Betting and Gaming Company
 
-***03/22 -- Now***
+***03/22 -- 10/23***
 
 Lead Test Manager for multiple projects of a Betting and Gaming Company.
 
