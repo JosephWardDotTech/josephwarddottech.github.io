@@ -80,7 +80,7 @@ while True:
 driver.quit()
 ```
 
-The Chrome DevTools Protocol (CDP) allows for very granular control over network activity. Here, we are using it to monitor when requests are sent and when requests are sent. Selenium has [https://www.selenium.dev/documentation/webdriver/bidirectional/chrome_devtools/](various ways) of using CDP, which also allow you to do interesting things like modify outgoing requests and incoming responses, simulate network conditions, etc.
+The Chrome DevTools Protocol (CDP) allows for very granular control over network activity. Here, we are using it to monitor when requests are sent and when requests are sent. Selenium has (https://www.selenium.dev/documentation/webdriver/bidirectional/chrome_devtools/)[various ways] of using CDP, which also allow you to do interesting things like modify outgoing requests and incoming responses, simulate network conditions, etc.
 
 ## How Cypress Does It - Network Proxying
 
@@ -165,7 +165,7 @@ driver.quit()
 server.stop()
 ```
 
-Cypress creates its own proxy to send network requests through. By installing BrowserMob proxy we can mimic this. BrowserMob proxy also has an API for granular network interception that allows us to rewrite requests, responses, and other things just like CDP.
+Cypress creates its own proxy to send network requests through. By installing BrowserMob proxy we can mimic this. BrowserMob proxy also has an API for granular network interception that allows us to rewrite requests, responses, and other things just like CDP. 
 
 ## A Third Way - Monkey Patching
 
