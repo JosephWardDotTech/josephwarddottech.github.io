@@ -80,7 +80,7 @@ while True:
 driver.quit()
 ```
 
-The Chrome DevTools Protocol (CDP) allows for very granular control over network activity. Here, we are using it to monitor when requests are sent and when requests are sent. Selenium has (https://www.selenium.dev/documentation/webdriver/bidirectional/chrome_devtools/)[various ways] of using CDP, which also allow you to do interesting things like modify outgoing requests and incoming responses, simulate network conditions, etc.
+The Chrome DevTools Protocol (CDP) allows for very granular control over network activity. Here, we are using it to monitor when requests are sent and when requests are sent. Selenium has [various ways](https://www.selenium.dev/documentation/webdriver/bidirectional/chrome_devtools) of using CDP, which also allow you to do interesting things like modify outgoing requests and incoming responses, simulate network conditions, etc.
 
 ## How Cypress Does It - Network Proxying
 
