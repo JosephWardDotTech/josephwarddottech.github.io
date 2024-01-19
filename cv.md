@@ -11,7 +11,7 @@ A software tester who believes that quality should be baked in, not sprinkled on
 
 Detailed project history information while at BJSS can be found by clicking [here](https://josephward.tech/projects/).
 
-## Consultant Software Tester, BJSS (Bristol)
+## Software Development Engineer in Test (SDET), BJSS (Bristol)
 
 ***2017 -- Now***
 
@@ -19,9 +19,9 @@ Detailed project history information while at BJSS can be found by clicking [her
 
 Testers at BJSS don’t just find bugs and raise defects, we ensure the continued delivery of predictable and robust software. We ask questions, promote testability, drive continuous improvement, and help nurture a mature testing culture across engagements.
 
-**Clients:** Betting and Gaming Company, Building Materials Company, Building Society, Financial Services Comparison Provider, Non-Departmental Public Body, Government Agency
+**Clients:** Statutory Corporation, Betting and Gaming Company, Building Materials Company, Building Society, Financial Services Comparison Provider, Non-Departmental Public Body, Government Agency
 
-**Roles:** Lead Test Manager, MLOps Software Tester, Software Development Engineer in Test (SDET), Testability Architect, Testing Coach, Senior Software Tester
+**Roles:** Lead Test Manager, MLOps Software Tester, SDET,, Testability Architect, Automation Coach, Senior Software Tester
 
 
 ## Tester, Sparkol (Bristol)
