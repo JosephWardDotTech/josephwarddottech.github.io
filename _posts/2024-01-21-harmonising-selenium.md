@@ -15,7 +15,9 @@ This post will reveal a particular feature of these tools that, in my experience
 When you have control over network events, it becomes much easier to ensure that your test actions align with what's happening in a structured manner. I've encountered situations where a test couldn't perform certain actions due to network issues, and there were no clear indicators on the screen. The application might be sending or receiving data in a way that prevents the user from taking action, among other issues. Additionally, unpredictable changes in network speed can disrupt the test. However, by using code to check if requests are in a "settled" state before proceeding, you can avoid this common problem that leads to unpredictable test behavior.
 
 ### Stability vs. Exact Duplication
-Although I'm talking about techniques like network syncronisation, I wouldn't go so far as to say I universally endorse them. As always, you are the best judge of the appropriate level of testing to determine the shippable quality of whatever's under test, and what constitutes an appropriate abstraction of "if these tests pass that then this is shippable". While I have found using techniques similar to this very useful in taming an unruly application in the past, this was contingent on discussion and agreement with the whole team. Ultimately, we found increased test stability an acceptale tradeoff for not having a perfectly exact duplicate of the environment a user would use, and considered these techniques as appropriate substitutes for a user's own ability to determine the loadstate of what was under test, when to take certain actions, etc. 
+I wouldn't go so far as to say I universally endorse controlling network events despite talking about it here. As always, you are the best judge of the appropriate level of testing for the shippable quality of whatever's under test, and what's an appropriate abstraction of "if these tests pass that then this change is shippable". While I have found using techniques like these useful in taming an unruly application, this was contingent on discussion and agreement with the whole team. Ultimately, we agreed increased test stability an acceptale tradeoff for not having a perfectly exact duplicate of the environment a user would use. Extensively manipulating network requests may also tie your UI tests to implementation details of the backend that may not be intended or appropriate.
+
+This blog post will also not explore the *appropriateness* of tests written using Selenium, Playwright, or Cypress. Targetting tests at the appropriate functional layer is a whole subject in and of itself. I will therefore generally assume you are writing tests with reference to [The Practical Test Pyramid](https://martinfowler.com/articles/practical-test-pyramid.html) model and [The Way of Testivus](https://web.archive.org/web/20170908010541/http:/www.agitar.com/downloads/TheWayOfTestivus.pdf).
 
 ### Test Flake:
 Test flake refers to the problem when testing yields inconsistent results on each run. Many people mistakenly believe that Selenium, a testing tool, is plagued by this issue, but it's not inherently unreliable. Selenium follows the W3C WebDriver rules and uses web commands to control the browser. This method can sometimes cause small delays and chances for errors between starting an action and finishing it. Also, Selenium has ways to wait for things to happen, but it doesn't automatically sync like newer tools do. This means testers have to do more work themselves. Plus, when you mix different ways of testing and complicated web designs, it seems like Selenium is more unreliable than it actually is. But really, Selenium is doing its job as it's supposed to, within its own limits.
@@ -49,13 +51,13 @@ Image credit: [https://www.tutorialspoint.com/index.htm](Tutorialspoint)
 Because Cypress stands in between the browser and the Internet it therefore affords Cypress complete control over associated events, notifying itself when events are dispatched, received back, allowing for manipulation of requests, connection speed profiling, etc. 
 
 ### Selenium
-Selenium, by contrast, has only fairly recently supported access to the CDP in Selenium 4. In my personal opinion, Selenium's tone is generally also quite dismissive of the CDP. I suppose this is generally because Selenium's approach has and continues to be that waiting for things specifically visible to the user to determine when to take actions is the best course of action. Personally, however, I think this harkens back to a simpler time of the internet, before frameworks like React made (for better or worse) pages more dynamic, or utilised a shadow DOM elusive to Selenium, or what have you. More information on that can be found [https://www.tutorialspoint.com/index.htm](here). 
+Selenium, by contrast, has only fairly recently supported access to the CDP in Selenium 4. In my opinion, Selenium's tone is quite dismissive of the CDP. I suppose this is generally because Selenium's approach has (and continues to be) that waiting for elements to be visible to the user to determine when to take actions and when to not is the best approach. Unfortunately, however, I believe this approach is too simple. It works well for older web applications that are more predictable.  But in today's world, where technologies like React make web pages more dynamic and technologies like shadow DOM are used, Selenium's way of testing websites may not be as effective.
 
 ## Code Examples
 ### Mimicking Playwright's Approach With Selenium
-*Note: all of my examples will use Python for readability, but it's obviously possible to do with other Selenium bindings as well.*
+*Note: all of my examples will use Python for readability, but it's obviously possible to do all this and more with other Selenium bindings as well.*
 
-As already discussed, the CDP allows for very granular control over network activity. Here, we are using it to monitor when requests are sent and when requests are received. Selenium has various ways of using CDP, logging those events just being one, which also allow you to do interesting things like modify outgoing requests and incoming responses, simulate network conditions, etc.
+As already discussed, the CDP allows for very granular control over network activity. Here, we are using the Network domain's `requestWillBeSent` and `responseReceived` commands to monitor when requests are sent and when requests are received. Selenium has various other ways of using CDP, logging those events is just one. You can also do interesting things like modify outgoing requests and incoming responses, simulate network conditions, etc. Maybe I'll explore those in the future, who knows!
 
 ```python 
 from selenium import webdriver
@@ -124,7 +126,11 @@ driver.quit()
 ```
 
 ### Mimicking Cypress' Approach With Selenium
-Cypress creates its own proxy to send network requests through. By installing BrowserMob proxy we can mimic this. BrowserMob proxy also has an API for granular network interception that allows us to rewrite requests, responses, and other things just like CDP. 
+Cypress creates its own proxy for network events. By installing BrowserMob proxy we can mimic this. BrowserMob proxy also has an API for granular network interception that allows us to rewrite requests, responses, and other things. Just like CDP. 
+
+From [https://github.com/lightbody/browsermob-proxy](BrowserMob Proxy's documentation):
+
+> BrowserMob Proxy allows you to manipulate HTTP requests and responses, capture HTTP content, and export performance data as a HAR file. BMP works well as a standalone proxy server, but it is especially useful when embedded in Selenium tests.
 
 ```python
 from browsermobproxy import Server
@@ -208,7 +214,9 @@ server.stop()
 ```
 
 ### A Third Way: Monkey Patching 
-By injecting JavaScript we can monkey patch the browser's internal methods for sending requests and receiving responses. This allows us to extend them on the fly with whatever extra code we want. While this is quite powerful, you will notice that the JavaScript should be injected after the page has loaded. Full page navigation will also reset the injected JavaScript, meaning this is typically only useful on single page applications, on features within a web application that won't cause page navigation, etc. So it has both flexibility but some fairly obvious limitations.
+By injecting JavaScript we can monkey patch the browser's internal methods for sending requests and receiving responses. This allows us to extend how the browser works on the fly with whatever extra code we want. While this is quite powerful, notice that the JavaScript has to be injected after the page has loaded. Full page navigation will also reset the injected JavaScript, meaning this is typically only useful on single page applications, on features within a web application that won't cause page navigation, etc. So it has both flexibility but some fairly obvious limitations.
+
+I have probably used some form of browser monkey patching most often of all out of everything we have discussed so far. It has multi-browser support, doesn't require you introduce another dependencym and is easily injected and cleared ad hoc. 
 
 ```python
 from selenium.webdriver.chrome.service import Service
