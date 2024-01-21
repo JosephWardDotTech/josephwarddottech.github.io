@@ -27,6 +27,7 @@ Test flake refers to the problem when testing yields inconsistent results on eac
 Playwright integrates with the browser's developer and debugging protocols. It uses this to listen and respond to browser lifecycle events, checks for their completion, and provides an array of tools for controlling and automating other browser actions.
 
 ![An architectural diagram of Playwright](https://josephward.tech/assets/img/playwright-arch.jpg)
+
 <sub>Image credit: [ProgramsBuzz](https://www.programsbuzz.com/).</sub>
 
 Putting aside the left hand side of the diagram for now, notice how the Playwright NodeJS server is shown to use CDP. CDP Stands for Chrome DevTools Protocol. What's that?
@@ -44,6 +45,7 @@ Note: the CDP is why, at launch, Playwright only supported Chromium based browse
 By contrast, Cypress achieves this level of control by proxying network events through itself.
 
 ![An architectural diagram of Cypress](https://josephward.tech/assets/img/cypress-arch.png)
+
 <sub>Image credit: [https://www.tutorialspoint.com/index.htm](Tutorialspoint)</sub>
 
 Because Cypress stands in between the browser and the Internet it therefore affords Cypress complete control over associated events, notifying itself when events are dispatched, received back, allowing for manipulation of requests, connection speed profiling, etc. 
