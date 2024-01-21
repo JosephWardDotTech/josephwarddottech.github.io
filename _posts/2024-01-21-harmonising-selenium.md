@@ -30,25 +30,27 @@ Playwright integrates with the browser's developer and debugging protocols. It u
 
 <sub>Image credit: [ProgramsBuzz](https://www.programsbuzz.com/)</sub>
 
-Putting aside the left hand side of the diagram for now, notice how the Playwright NodeJS server is shown to use CDP. CDP Stands for Chrome DevTools Protocol. What's that?
+Putting aside the left hand side of the diagram for now, notice how the Playwright NodeJS server is shown to use CDP. CDP stands for Chrome DevTools Protocol. What's that?
 
 From the CDP [documentation](https://chromedevtools.github.io/devtools-protocol/):
 > The Chrome DevTools Protocol allows for tools to instrument, inspect, debug and profile Chromium, Chrome and other Blink-based browsers.
 
 > Instrumentation is divided into a number of domains (DOM, Debugger, Network etc.). Each domain defines a number of commands it supports and events it generates. Both commands and events are serialized JSON objects of a fixed structure.
 
-Once Playwright has established a connection with CDP and integrated the relevant event listeners within its framework — a process that involves a fair amount of complexity so won't be covered in full — it gains the capability to perform a variety of actions within the browser.  Ultimately, once made user friendly in the higher-level, user accessibke Playwright API, this allows Playwright to expose this functionality to users as seen in the [Network events](https://playwright.dev/docs/network#network-events) part of the documentation. A similar pattern can be seen in how Playwright interacts with many other things in the CDP spec.
+Internally, Playwright uses specific domains and commands to control the browser in detail. While the process of setting up event listeners and using these commands is complex and not explained here, it allows Playwright to offer a variety of browser functions through its public API that users interact with. The domain we are most interested in for this blog is the [Network domain](https://chromedevtools.github.io/devtools-protocol/tot/Network/).
 
-Note: the CDP is why, at launch, Playwright only supported Chromium based browsers. As time has gone on, non-Chromium based browsers are supported by analagous systems for communicating with the broser at a low-level in a similar way. But at the time of writing, there are still some features missing from these implementations (such as modifying requests on the fly, performance data, heap snapshots, etc).
+Note: the CDP is why, at launch, Playwright only supported Chromium based browsers. As time has gone on, non-Chromium browsers are supported by analagous systems for controlling the broser in a similar way. But, at the time of writing, there are still some features missing from these implementations (such as modifying requests on the fly, performance data, heap snapshots, etc).
 
 ### Cypress: Network Events and Network Proxying
-By contrast, Cypress achieves this level of control by proxying network events through itself.
+By contrast, Cypress achieves this level of control by proxying network events through itself. Cypress also owes some of its speed to being within the same run-loop as the browser it's using, allowing for fine grain control and debug options in that way.
 
 ![An architectural diagram of Cypress](https://josephward.tech/assets/img/cypress-arch.png)
 
 <sub>Image credit: [Tutorialspoint](https://www.tutorialspoint.com/index.htm)</sub>
 
-Because Cypress stands in between the browser and the Internet it therefore affords Cypress complete control over associated events, notifying itself when events are dispatched, received back, allowing for manipulation of requests, connection speed profiling, etc. 
+Because Cypress stands in between the browser and the Internet it therefore affords Cypress complete control over associated events, notifying itself when events are dispatched, received back, allowing for manipulation of requests, connection speed profiling, etc.
+
+Note: early versions of Selenium (RC) worked in the same way as Cypress (through JS) before that was ditched in favour of external drivers communicating with the JSON wire protocol. Cypress effectively also runs in its own iframe, which is partly why it has longstanding problem with testing applications with them (though I understand steps have been taken to help deal with this limitation).
 
 ### Selenium
 Selenium, by contrast, has only fairly recently supported access to the CDP in Selenium 4. In my opinion, Selenium's tone is quite dismissive of the CDP. I suppose this is generally because Selenium's approach has (and continues to be) that waiting for elements to be visible to the user to determine when to take actions and when to not is the best approach. Unfortunately, however, I believe this approach is too simple. It works well for older web applications that are more predictable.  But in today's world, where technologies like React make web pages more dynamic and technologies like shadow DOM are used, Selenium's way of testing websites may not be as effective.
