@@ -9,9 +9,9 @@ menu: false
 
 Thanks for attending the talk!
 
-Here are the code examples we walked through and supporting information.
+Here are the code examples we walked through and some supporting information about what they are and how to use them.
 
-## How Playwright Does It - Chrome DevTools Protocol (CDP)
+## Mimicking How Playwright Does It - Chrome DevTools Protocol (CDP)
 
 ```python 
 from selenium import webdriver
@@ -24,7 +24,6 @@ import json
 chrome_driver_path = './chromedriver' 
 
 # enable Chrome performance logging for granular network event information (using CDP)
-capabilities['goog:loggingPrefs'] = {'performance': 'ALL'}
 capabilities = DesiredCapabilities.CHROME
 capabilities['goog:loggingPrefs'] = {'performance': 'ALL'}
 
@@ -80,9 +79,9 @@ while True:
 driver.quit()
 ```
 
-The Chrome DevTools Protocol (CDP) allows for very granular control over network activity. Here, we are using it to monitor when requests are sent and when requests are sent. Selenium has [various ways](https://www.selenium.dev/documentation/webdriver/bidirectional/chrome_devtools) of using CDP, which also allow you to do interesting things like modify outgoing requests and incoming responses, simulate network conditions, etc.
+The Chrome DevTools Protocol (CDP) allows for very granular control over network activity. Here, we are using it to monitor when requests are sent and when requests are sent. Selenium has [various ways](https://www.selenium.dev/documentation/webdriver/bidirectional/chrome_devtools) of using CDP, logging events just being one, which also allow you to do interesting things like modify outgoing requests and incoming responses, simulate network conditions, etc.
 
-## How Cypress Does It - Network Proxying
+## Mimicking How Cypress Does It - Network Proxying
 
 ```python
 from browsermobproxy import Server
@@ -134,12 +133,12 @@ while True:
         request_details = f"{request['url']}_{request['method']}_{entry['startedDateTime']}"
         request_id = hashlib.md5(request_details.encode()).hexdigest()
 
-        # add request to set (checking if it's there) then log it out
+        # add request to set (checking if it's there) then log it
         if request_id not in sent_requests:
             sent_requests.add(request_id)
             print(f"Request Sent: {request_details}")
 
-        # add response to set (checking if it's there) then log it out
+        # add response to set (checking if it's there) then log it
         if response['status'] and request_id not in received_responses:
             received_responses.add(request_id)
             print(f"Response Received: {request['url']} with status {response['status']}")
@@ -178,7 +177,7 @@ import hashlib
 # your path to browsermob chromedriver
 chrome_driver_path = './chromedriver' 
 
-# Setting up Selenium to use the proxy
+# Setting up Selenium 
 options = webdriver.ChromeOptions()
 options.add_argument('--ignore-certificate-errors')
 
@@ -264,8 +263,8 @@ while True:
 driver.quit()
 ```
 
-By injecting JavaScript we can monkey patch the browser's internal methods for sending and receiving responses. This allows us to extend them on the fly with whatever additional code we want. While this is quite powerful, you will notice that the JavaScript should be injected after the page has loaded. Full page navigation will also reset the injected JavaScript, meaning this is typically only useful on single page applications, on features within a web application that won't cause page navigation, etc. 
+By injecting JavaScript we can monkey patch the browser's internal methods for sending requests and receiving responses. This allows us to extend them on the fly with whatever extra code we want. While this is quite powerful, you will notice that the JavaScript should be injected after the page has loaded. Full page navigation will also reset the injected JavaScript, meaning this is typically only useful on single page applications, on features within a web application that won't cause page navigation, etc. So it has both flexibility but fairly obvious limitations.
 
 ## Closing thoughts
 
-Cypress and Playwright are very powerful. You can leverage some of what makes them powerful and port them over to Selenium 3 or 4. How and if you use these tools is up to you, but I have found it very useful to make the tests of my projects more robust by having more granular control of network events (by whatever method is appropriate). Ultimately whether these methods are useful to you all depends on the tradeoffs you are willing or able to make in order to vouchsafe the shippable quality of whatever's under test in a responsible and accurate way. 
+Cypress and Playwright are very powerful. You can leverage some of what makes them powerful and port them over to Selenium 3 or 4. How and if you use these tools is up to you, but I have found it very useful to make the tests of my projects more robust by having more granular control of network events (by whatever method is appropriate). Ultimately, whether these methods are useful to you depends on the tradeoffs you are willing or able to make in order to vouchsafe the shippable quality of whatever's under test in a responsible and accurate way. 
