@@ -5,22 +5,23 @@ date: 2024-01-21 15:37
 tags: blog
 ---
 
-# Introduction
-## Harnessing Network Events in Testing
+# Harmonising Selenium with Playwright and Cypress: A Journey Through Network Event Handling
+## Introduction
+### Harnessing Network Events in Testing
 Playwright and Cypress are well-known for their 'autowait' feature. This neat trick aligns elements seamlessly and avoids many 'test flake' issues, like Selenium’s `StaleElementException` and `NoSuchElementException`. However, I'm skeptical about this so-called 'magic' in testing. A reliable test should avoid unexpected variables that are meant to simplify the process. I don't like accepting hidden 3rd party logic influencing my tests without scrutiny; I believe in thoroughly dissecting and analyzing everything to ensure test reliability. A deep understanding is also very valuable for troubleshooting and grasping what tests are actually doing with whatever's under test.
 
 This post will reveal a particular feature of these tools that, in my experience, is central to what makes them useful. I'll cover how this feature can also be backported to historic Selenium frameworks to enhance the trustworthiness of your tests. This feature is granular control over **Network Events**.
 
 When you have control over network events, it becomes much easier to ensure that your test actions align with what's happening in a structured manner. I've encountered situations where a test couldn't perform certain actions due to network issues, and there were no clear indicators on the screen. The application might be sending or receiving data in a way that prevents the user from taking action, among other issues. Additionally, unpredictable changes in network speed can disrupt the test. However, by using code to check if requests are in a "settled" state before proceeding, you can avoid this common problem that leads to unpredictable test behavior.
 
-## Stability vs. Exact Duplication
+### Stability vs. Exact Duplication
 Although I'm talking about techniques like network syncronisation, I wouldn't go so far as to say I universally endorse them. As always, you are the best judge of the appropriate level of testing to determine the shippable quality of whatever's under test, and what constitutes an appropriate abstraction of "if these tests pass that then this is shippable". While I have found using techniques similar to this very useful in taming an unruly application in the past, this was contingent on discussion and agreement with the whole team. Ultimately, we found increased test stability an acceptale tradeoff for not having a perfectly exact duplicate of the environment a user would use, and considered these techniques as appropriate substitutes for a user's own ability to determine the loadstate of what was under test, when to take certain actions, etc. 
 
-## Test Flake:
+### Test Flake:
 Test flake refers to the problem when testing yields inconsistent results on each run. Many people mistakenly believe that Selenium, a testing tool, is plagued by this issue, but it's not inherently unreliable. Selenium follows the W3C WebDriver rules and uses web commands to control the browser. This method can sometimes cause small delays and chances for errors between starting an action and finishing it. Also, Selenium has ways to wait for things to happen, but it doesn't automatically sync like newer tools do. This means testers have to do more work themselves. Plus, when you mix different ways of testing and complicated web designs, it seems like Selenium is more unreliable than it actually is. But really, Selenium is doing its job as it's supposed to, within its own limits.
 
-# Playwright and Cypress' Approach to Harnessing Network Events
-## Playwright: Network Events and CDP
+## Playwright and Cypress' Approach to Harnessing Network Events
+### Playwright: Network Events and CDP
 Playwright integrates with the browser's developer and debugging protocols. It uses this to listen and respond to browser lifecycle events, checks for their completion, and provides an array of tools for controlling and automating other browser actions.
 
 ![An architectural diagram of Playwright](https://josephward.tech/assets/img/playwright-arch.jpg)
@@ -38,7 +39,7 @@ Once Playwright has established a connection with CDP and integrated the relevan
 
 Note: the CDP is why, at launch, Playwright only supported Chromium based browsers. As time has gone on, non-Chromium based browsers are supported by analagous systems for communicating with the broser at a low-level in a similar way. But at the time of writing, there are still some features missing from these implementations (such as modifying requests on the fly, performance data, heap snapshots, etc).
 
-## Cypress: Network Events and Network Proxying
+### Cypress: Network Events and Network Proxying
 By contrast, Cypress achieves this level of control by proxying network events through itself.
 
 ![An architectural diagram of Cypress](https://josephward.tech/assets/img/cypress-arch.png)
@@ -47,13 +48,11 @@ Image credit: [https://www.tutorialspoint.com/index.htm](Tutorialspoint)
 
 Because Cypress stands in between the browser and the Internet it therefore affords Cypress complete control over associated events, notifying itself when events are dispatched, received back, allowing for manipulation of requests, connection speed profiling, etc. 
 
-## Selenium
-
+### Selenium
 Selenium, by contrast, has only fairly recently supported access to the CDP in Selenium 4. In my personal opinion, Selenium's tone is generally also quite dismissive of the CDP. I suppose this is generally because Selenium's approach has and continues to be that waiting for things specifically visible to the user to determine when to take actions is the best course of action. Personally, however, I think this harkens back to a simpler time of the internet, before frameworks like React made (for better or worse) pages more dynamic, or utilised a shadow DOM elusive to Selenium, or what have you. More information on that can be found [https://www.tutorialspoint.com/index.htm](here). 
 
-
-# Code Examples
-## Mimicking Playwright's Approach With Selenium
+## Code Examples
+### Mimicking Playwright's Approach With Selenium
 *Note: all of my examples will use Python for readability, but it's obviously possible to do with other Selenium bindings as well.*
 
 As already discussed, the CDP allows for very granular control over network activity. Here, we are using it to monitor when requests are sent and when requests are received. Selenium has various ways of using CDP, logging those events just being one, which also allow you to do interesting things like modify outgoing requests and incoming responses, simulate network conditions, etc.
@@ -124,8 +123,7 @@ while True:
 driver.quit()
 ```
 
-## Mimicking Cypress' Approach With Selenium
-
+### Mimicking Cypress' Approach With Selenium
 Cypress creates its own proxy to send network requests through. By installing BrowserMob proxy we can mimic this. BrowserMob proxy also has an API for granular network interception that allows us to rewrite requests, responses, and other things just like CDP. 
 
 ```python
@@ -209,7 +207,7 @@ driver.quit()
 server.stop()
 ```
 
-## A Third Way: Monkey Patching 
+### A Third Way: Monkey Patching 
 By injecting JavaScript we can monkey patch the browser's internal methods for sending requests and receiving responses. This allows us to extend them on the fly with whatever extra code we want. While this is quite powerful, you will notice that the JavaScript should be injected after the page has loaded. Full page navigation will also reset the injected JavaScript, meaning this is typically only useful on single page applications, on features within a web application that won't cause page navigation, etc. So it has both flexibility but some fairly obvious limitations.
 
 ```python
@@ -307,5 +305,5 @@ while True:
 driver.quit()
 ```
 
-# Closing Thoughts
+## Closing Thoughts
 Cypress and Playwright are very powerful. You can leverage some of what makes them powerful and port them over to Selenium 3 or 4. How and if you use these tools is up to you, but I have found it very useful to make the tests of my projects more robust by having more granular control of network events (by whatever method is appropriate). Ultimately, whether these methods are useful to you depends on the tradeoffs you are willing or able to make in order to vouchsafe the shippable quality of whatever's under test in a responsible and accurate way. 
