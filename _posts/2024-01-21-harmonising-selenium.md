@@ -28,7 +28,7 @@ Playwright integrates with the browser's developer and debugging protocols. It u
 
 ![An architectural diagram of Playwright](https://josephward.tech/assets/img/playwright-arch.jpg)
 
-<sub>Image credit: [ProgramsBuzz](https://www.programsbuzz.com/).</sub>
+<sub>Image credit: [ProgramsBuzz](https://www.programsbuzz.com/)</sub>
 
 Putting aside the left hand side of the diagram for now, notice how the Playwright NodeJS server is shown to use CDP. CDP Stands for Chrome DevTools Protocol. What's that?
 
