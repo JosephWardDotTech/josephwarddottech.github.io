@@ -46,7 +46,7 @@ By contrast, Cypress achieves this level of control by proxying network events t
 
 ![An architectural diagram of Cypress](https://josephward.tech/assets/img/cypress-arch.png)
 
-<sub>Image credit: [https://www.tutorialspoint.com/index.htm](Tutorialspoint)</sub>
+<sub>Image credit: [Tutorialspoint](https://www.tutorialspoint.com/index.htm)</sub>
 
 Because Cypress stands in between the browser and the Internet it therefore affords Cypress complete control over associated events, notifying itself when events are dispatched, received back, allowing for manipulation of requests, connection speed profiling, etc. 
 
@@ -128,7 +128,7 @@ driver.quit()
 ### Mimicking Cypress' Approach With Selenium
 Cypress creates its own proxy for network events. By installing BrowserMob proxy we can mimic this. BrowserMob proxy also has an API for granular network interception that allows us to rewrite requests, responses, and other things. Just like CDP. 
 
-From (https://github.com/lightbody/browsermob-proxy)[BrowserMob Proxy's documentation]:
+From [BrowserMob Proxy's documentation](https://github.com/lightbody/browsermob-proxy):
 
 > BrowserMob Proxy allows you to manipulate HTTP requests and responses, capture HTTP content, and export performance data as a HAR file. BMP works well as a standalone proxy server, but it is especially useful when embedded in Selenium tests.
 
