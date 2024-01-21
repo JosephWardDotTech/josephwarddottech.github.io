@@ -151,7 +151,7 @@ proxy = server.create_proxy()
 # setup chrome to use proxy
 options = webdriver.ChromeOptions()
 options.add_argument('--proxy-server={0}'.format(proxy.proxy))
-options.add_argument('--ignore-certificate-errors')
+options.add_argument('--ignore-certificate-errors') # needed as browsermob proxy has no cert in this example
 service = Service(executable_path=chrome_driver_path)
 driver = webdriver.Chrome(service=service, options=options)
 
@@ -227,13 +227,9 @@ import hashlib
 # your path to browsermob chromedriver
 chrome_driver_path = './chromedriver' 
 
-# Setting up Selenium 
-options = webdriver.ChromeOptions()
-options.add_argument('--ignore-certificate-errors')
-
 # setup chrome
 service = Service(executable_path=chrome_driver_path)
-driver = webdriver.Chrome(service=service, options=options)
+driver = webdriver.Chrome(service=service)
 
 # navigate to desired website
 driver.get("https://josephward.tech/")
