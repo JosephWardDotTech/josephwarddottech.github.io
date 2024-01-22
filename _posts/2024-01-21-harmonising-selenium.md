@@ -19,7 +19,7 @@ I wouldn't go so far as to say I universally endorse controlling network events 
 
 This blog post will also not explore the *appropriateness* of tests written using Selenium, Playwright, or Cypress. Targetting tests at the appropriate functional layer is a whole subject in and of itself. I will therefore generally assume you are writing tests with reference to [The Practical Test Pyramid](https://martinfowler.com/articles/practical-test-pyramid.html) model and [The Way of Testivus](https://web.archive.org/web/20170908010541/http:/www.agitar.com/downloads/TheWayOfTestivus.pdf).
 
-### Test Flake:
+### Test Flake
 Test flake refers to the problem when testing yields inconsistent results on each run. Many people mistakenly believe that Selenium, a testing tool, is plagued by this issue, but it's not inherently unreliable. Selenium follows the W3C WebDriver rules and uses web commands to control the browser. This method can sometimes cause small delays and chances for errors between starting an action and finishing it. Also, Selenium has ways to wait for things to happen, but it doesn't automatically sync like newer tools do. This means testers have to do more work themselves. Plus, when you mix different ways of testing and complicated web designs, it seems like Selenium is more unreliable than it actually is. But really, Selenium is doing its job as it's supposed to, within its own limits.
 
 ## Playwright and Cypress' Approach to Harnessing Network Events
