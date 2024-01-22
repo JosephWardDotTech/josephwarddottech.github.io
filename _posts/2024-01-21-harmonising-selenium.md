@@ -218,7 +218,9 @@ server.stop()
 ### A Third Way: Monkey Patching 
 By injecting JavaScript we can monkey patch the browser's internal methods for sending requests and receiving responses. This allows us to extend how the browser works on the fly with whatever extra code we want. While this is quite powerful, notice that the JavaScript has to be injected after the page has loaded. Full page navigation will also reset the injected JavaScript, meaning this is typically only useful on single page applications, on features within a web application that won't cause page navigation, etc. So it has both flexibility but some fairly obvious limitations.
 
-I have probably used some form of browser monkey patching most often of all out of everything we have discussed so far. It has multi-browser support, doesn't require you introduce another dependencym and is easily injected and cleared ad hoc. 
+I have probably used some form of browser monkey patching most often of all out of everything we have discussed so far. It has multi-browser support, doesn't require you introduce another dependencym and is easily injected and cleared ad hoc.
+
+Note: Although we are monkey patching `XMLHttpRequest` this works equally well with `fetch` if that's what's under test is using.
 
 ```python
 from selenium.webdriver.chrome.service import Service
