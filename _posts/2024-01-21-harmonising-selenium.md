@@ -220,7 +220,7 @@ By injecting JavaScript we can monkey patch the browser's internal methods for s
 
 I have probably used some form of browser monkey patching most often of all out of everything we have discussed so far. It has multi-browser support, doesn't require you introduce another dependencym and is easily injected and cleared ad hoc.
 
-Note: Although we are monkey patching `XMLHttpRequest` this works equally well with `fetch` if that's what's under test is using.
+Note: Although we are monkey patching `XMLHttpRequest` this works equally well with `fetch` if that's what's under test is using. The code below introduces a *small* memory leak (due the objects we create to track hanging around in memory), but this shouldn't be problematic for a single test and is easy to do if needed.
 
 ```python
 from selenium.webdriver.chrome.service import Service
@@ -244,6 +244,14 @@ window.openedRequests = {}; // initialise empty object for tracking
 window.closedRequests = {}; // initialise empty object for tracking
 
 (function() {
+  // first we should check if this monkey patch has already been applied
+  if (window.__myCustomXMLHttpRequestHandlerInjected) {
+    return;
+  }
+
+  // if monkey patch not already applied, let's say it has
+  window.__myCustomXMLHttpRequestHandlerInjected = true;
+
   var oldSend = XMLHttpRequest.prototype.send; // we retain a reference to the original 
   var oldOpen = XMLHttpRequest.prototype.open; // we retain a reference to the original 
 
