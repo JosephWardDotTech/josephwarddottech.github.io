@@ -240,8 +240,8 @@ driver.get("https://josephward.tech/")
 
 # define and execute the XMLHttpRequest monkey patch
 js_script = """
-window.openedRequests = window.openedRequests || {}; // initialise empty object for tracking
-window.closedRequests = window.closedRequests || {}; // initialise empty object for tracking
+window.openedRequests = window.openedRequests || {}; // initialise empty object for tracking (or use existing)
+window.closedRequests = window.closedRequests || {}; // initialise empty object for tracking (or use existing)
 
 (function() {
   // first we should check if this monkey patch has already been applied
