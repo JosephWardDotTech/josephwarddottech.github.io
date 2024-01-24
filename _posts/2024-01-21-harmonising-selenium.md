@@ -240,8 +240,8 @@ driver.get("https://josephward.tech/")
 
 # define and execute the XMLHttpRequest monkey patch
 js_script = """
-window.openedRequests = {}; // initialise empty object for tracking
-window.closedRequests = {}; // initialise empty object for tracking
+window.openedRequests = window.openedRequests || {}; // initialise empty object for tracking
+window.closedRequests = window.closedRequests || {}; // initialise empty object for tracking
 
 (function() {
   // first we should check if this monkey patch has already been applied
@@ -269,7 +269,12 @@ window.closedRequests = {}; // initialise empty object for tracking
   // Intercept XMLHttpRequest send method to track when the request is complete
   XMLHttpRequest.prototype.send = function() {
     var requestId = this.requestId;
+    var originalOnReadyStateChange = this.onreadystatechange; // retain original handler (avoids breakages)
+
     this.onreadystatechange = function() {
+      if (originalOnReadyStateChange) {
+        originalOnReadyStateChange.apply(this, arguments); // first call original handler
+      }
       if (this.readyState === 4) { // this readyState means the request has completed
         window.closedRequests[requestId] = {
           url: window.openedRequests[requestId].url,
