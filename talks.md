@@ -9,6 +9,16 @@ menu: true
 
 As a speaker, I prepare talks that I think will appeal to the software testing community. I also participate in debates about technology. Please get in touch if any of these sound interesting for your local meetup, or if you're looking for a tester who can add some strong opinions to your panel.
 
+## The Secret to Stable Selenium UI Tests (No, really...)
+
+***2024***
+
+An examination of network manipulation commands in Cypress and Playwright and how they can be used in Selenium to enhance test reliability.
+
+This talk also became the topic of a blog post, which can he found [here](https://josephward.tech/2024-01-21-harmonising-selenium/).
+
+![The Secret to Stable Selenium UI Tests (No, really...)](./assets/img/test-talks/secret-selenium.jpeg)
+
 ## Introduction to REST Testing: A Beginner's Guide
 
 ***2021***
