@@ -15,7 +15,7 @@ I have worked on many projects with BJSS, across a wide range of industries and 
 
 SDET for the Application Beta Delivery of a Statutory Corporation. Test engineering, buddy mentoring, etc.
 
-*Technologies used: C#, TypeScript, BrowserStack, ESLint, Jest, JMeter, MSTest, Next.js, Ninject, React, RestSharp, Selenium, Stryker Mutator, Wiremock, Zustand*
+*Technologies used: C#, Groovy, TypeScript, BrowserStack, ESLint, Jest, JMeter, MSTest, Next.js, Ninject, React, RestSharp, Selenium, Stryker Mutator, Wiremock, Zustand*
 
 ## SDET, Global Airline
 
@@ -53,7 +53,7 @@ Consultant for the Test Enablement project of a Building Society.
 
 Good practice consultancy, development of reporting and integration pipeline infrastructure, coaching incumbent team, test engineering, and testability architect.
 
-*Technologies used: C#, ASP.NET, Azure Pipelines, JMeter, Mule, RestSharp, Selenium*
+*Technologies used: C#, Groovy, ASP.NET, Azure Pipelines, JMeter, Mule, RestSharp, Selenium*
 
 ## Software Tester, Financial Services Comparison Provider
 
@@ -73,7 +73,7 @@ Senior Software Tester for the agile project delivery of a non-departmental publ
 
 Testing GDS frontend and REST API middleware, consultancy and training to incumbent QA team, and performance testing backend SaaS configuration.
 
-*Technologies used: TypeScript, Cucumber, Azure Pipelines, Enzyme, JAX-RS, Jest, JMeter, JSForce, React, Request, Selenium*
+*Technologies used: TypeScript, Groovy, Cucumber, Azure Pipelines, Enzyme, JAX-RS, Jest, JMeter, JSForce, React, Request, Selenium*
 
 ## Senior Software Tester, Government Agency
 
