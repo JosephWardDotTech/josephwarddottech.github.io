@@ -9,7 +9,7 @@ menu: true
 
 A software tester who believes that quality should be baked in, not sprinkled on, and an advocate of asking the right questions at the right time to manage risk, save money, and cut time to delivery. A versatile SDET and Test Architect with experience using a wide range of programming languages and testing libraries to deliver great outcomes.
 
-Detailed project history information while at BJSS can be found by clicking [here](https://josephward.tech/projects/).
+Additional details about my work at BJSS, including information about specific projects, can be found [here](https://josephward.tech/projects/).
 
 ## Software Development Engineer in Test (SDET), BJSS (Bristol)
 
