@@ -20,11 +20,11 @@ author1:
 
   # This photo will be used in the about section.
   picture:
-    path:            assets/img/josephward.jpeg
+    path:            josephward.png
     # srcset is optional, but can be used to provide higher res versions for retina displays
     srcset:
-      1x:            assets/img/josephward.jpeg
-      2x:            assets/img/josephward.jpeg
+      1x:            josephward.png
+      2x:            josephward.png
 
   # Social media icons in sidebar.
   # Comment/uncommet to show/hide. Rearrange to change the order in which they appear.
