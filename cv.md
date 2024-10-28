@@ -7,9 +7,9 @@ hide_description: true
 menu: true
 ---
 
-A software tester who believes that quality should be baked in, not sprinkled on, and an advocate of asking the right questions at the right time to manage risk, save money, and cut time to delivery. A versatile SDET and Test Architect with experience using a wide range of programming languages and testing libraries to deliver great outcomes.
+A software tester who believes that quality should be baked in, not sprinkled on, and an advocate of asking the right questions at the right time to manage risk, save money, and cut time to delivery. A flexible SDET and Test Architect experienced with various programming languages and testing tools to achieve excellent results.
 
-Additional details about my work at BJSS, including information about specific projects, can be found [here](https://josephward.tech/projects/).
+More details about my work at BJSS, including specific projects, are available [here](https://josephward.tech/projects/).
 
 ## Software Development Engineer in Test (SDET), BJSS (Bristol)
 
@@ -19,10 +19,7 @@ Additional details about my work at BJSS, including information about specific p
 
 Testers at BJSS don’t just find bugs and raise defects, we ensure the continued delivery of predictable and robust software. We ask questions, promote testability, drive continuous improvement, and help nurture a mature testing culture across engagements.
 
-**Clients:** Statutory Corporation, Betting and Gaming Company, Building Materials Company, Building Society, Financial Services Comparison Provider, Non-Departmental Public Body, Government Agency
-
-**Roles:** Lead Test Manager, MLOps Software Tester, SDET,, Testability Architect, Automation Coach, Senior Software Tester
-
+**Clients:** Executive Agency, Global Airline, Statutory Corporation, Betting and Gaming Company, Building Materials Company, Building Society, Financial Services Comparison Provider, Non-Departmental Public Body, Government Agency
 
 ## Tester, Sparkol (Bristol)
 
@@ -33,7 +30,6 @@ Testers at BJSS don’t just find bugs and raise defects, we ensure the continue
 As the sole tester I was central to Sparkol’s testing strategy, mucking in from day one with anything we wanted to create and squashing bugs before they could appear.
 
 An abbreviated list of my responsibilities includes: peer reviewing, pair programming, automation in testing, exploratory testing, test management of external crowd testing vendors, and organising bug bashes.
-
 
 ## Tester then Test Lead, Hargreaves Lansdown (Bristol)
 
@@ -55,7 +51,7 @@ Originally a Data Entry Operator, I occasionally took the role of Tester for sof
 
 I use whatever technology best solves the problem at hand, not a golden hammer or whatever’s new and shiny. I base my approach on reliable, tried-and-true software development principles and patterns.
 
-That being said, I have implemented so-called “full stack” automation in testing using **C#**, **Python**, **Ruby**, **JavaScript**, and **Java**, not to mention countless supporting libraries.
+That l said, I have implemented so-called “full stack” automation in testing using languages like **C#**, **Python**, **Ruby**, **Java**, and **TypeScript**, along with countless supporting libraries.
 
 ## Personal
 
