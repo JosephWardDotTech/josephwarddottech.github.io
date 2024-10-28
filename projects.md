@@ -7,11 +7,45 @@ hide_description: true
 menu: false
 ---
 
-I have worked on many projects with BJSS, across a wide range of industries and technologies. This page provides a more detailed description of that experience.
+I’ve worked on many projects with BJSS, covering different industries and technologies. This page gives more details about that experience.
 
-## Software Development Engineer in Test (SDET), Statutory Corporation
+## Software Development Engineer in Test (SDET), Executive Agency
 
-***11/23 -- Now***
+***03/24 -- Now***
+
+SDET for various projects of an executive agency.
+
+**Project 1: Audit & Logging**
+
+Test engineering, "shift left" consultancy, testable design, and performance testing.
+
+_Technologies used: Ruby, TypeScript, Artillery, AWS, Drone, Jest, Kinesis, Lambda, OpenSearch (ElasticSearch), React Testing Library, Selenium (Capybara), Serverless Framework_
+
+**Project 2: Data Migration**
+
+Data exploration, ETL automation in testing, performance/stability testing.
+
+_Technologies used: Java, Ruby, Aruba, Cucumber, Docker, FactoryBot, Faker, Flyway, Spring Boot, SQL, Hibernate_
+
+**Project 3: Mainframe Modernisation**
+
+Automation in testing for a legacy mainframe application's journey to the cloud.
+
+_Technologies used: Natural (SoftwareAG), Ruby, Cucumber, Docker, FactoryBot, Faker, XSL Transformations (XSLT)_
+
+## SDET, Global Airline
+
+***10/24 -- 10/24**
+
+SDET for the release hardening activities of a global airline.
+
+Short-term engagement to ensure the delivery of a key account milestone.
+
+_Technologies used: JavaScript, TypeScript, Argo, DataDog, GitHub Actions, Playwright, Wiremock_
+
+## SDET, Statutory Corporation
+
+***10/23 -- 03/24***
 
 SDET for the Application Beta Delivery of a Statutory Corporation. Test engineering, buddy mentoring, etc.
 
@@ -25,15 +59,17 @@ SDET for the release hardening activities of a Global Airline. Short-term engage
 
 *Technologies used: JavaScript, TypeScript, Argo, DataDog, GitHub Actions, Playwright, Wiremock*
 
-## Lead Test Manager, Betting and Gaming Company
+## Test Lead, Betting and Gaming Company
 
 ***03/22 -- 10/23***
 
-Lead Test Manager for multiple projects of a Betting and Gaming Company.
+Test Lead across multiple projects of a betting and gaming company. Primary point of contact for Test & Assurance within the account.
 
-Strategic leadership, building communities of practice, enabling testing success, recruitment, resourcing, and relationship management with senior client stakeholders.
+**Projects: Back Office Members, Cashout Services, Italian Mapping, Payment Systems Rewrite, Real Time Data, Responsible Gambling, Search Engine Optimisation, Test Automation Team Augmentation**
 
-*Technologies used: C#, GoLang, TypeScript, Cypress, GitLab Pipelines, GoDog, Kafka, Selenium*
+Strategic leadership, building communities of practice, resourcing, buddy mentoring, peer reviewing, test architecture, and relationship management with senior client stakeholders.
+
+_Technologies used: C#, GoLang, Groovy, TypeScript, Cypress, GitLab Pipelines, GoDog, JMeter, Kafka, Resty, Selenium_
 
 ## Software Tester, Building Materials Comany
 
