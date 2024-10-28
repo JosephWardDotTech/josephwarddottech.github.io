@@ -35,7 +35,7 @@ _Technologies used: Natural (SoftwareAG), Ruby, Cucumber, Docker, FactoryBot, Fa
 
 ## SDET, Global Airline
 
-***10/24 -- 10/24**
+***10/24 -- 10/24***
 
 SDET for the release hardening activities of a global airline.
 
@@ -71,51 +71,51 @@ Strategic leadership, building communities of practice, resourcing, buddy mentor
 
 _Technologies used: C#, GoLang, Groovy, TypeScript, Cypress, GitLab Pipelines, GoDog, JMeter, Kafka, Resty, Selenium_
 
-## Software Tester, Building Materials Comany
+## SDET, Building Materials Comany
 
 ***11/21 -- 03/22***
 
-Software Tester for the Tools Platform project of a Building Materials Company.
+SDET for the Tools Platform project of a Building Materials Company.
 
 Development, testing, and release of a new, global application. Refactoring existing components into a unified library to benefit future development.
 
 *Technologies used: C#, TypeScript, Azure Pipelines, Cypress, Enzyme, React, React Testing Library, Selenium, Specflow, Playwright*
 
-## Consultant, Building Society
+## Consultant SDET, Building Society
 
 ***02/21 -- 12/21***
 
-Consultant for the Test Enablement project of a Building Society.
+Consultant SDET for the Test Enablement project of a Building Society.
 
 Good practice consultancy, development of reporting and integration pipeline infrastructure, coaching incumbent team, test engineering, and testability architect.
 
 *Technologies used: C#, Groovy, ASP.NET, Azure Pipelines, JMeter, Mule, RestSharp, Selenium*
 
-## Software Tester, Financial Services Comparison Provider
+## SDET, Financial Services Comparison Provider
 
 ***09/20 -- 02/21***
 
-Software Tester for the lift and shift of a financial services comparison provider's MLOps capability.
+SDET for the lift and shift of a financial services comparison provider's MLOps capability.
 
 Testing across the entire machine learning pipeline, from data exploration to model integration. Automation support and coaching for the current QA team.
 
 *Technologies used: Python (Anaconda), Apache Spark (PySpark), Azure Pipelines, Databricks, Databricks Connect, Pandas, Pytest, SQL Management Studio*
 
-## Senior Software Tester, Non-Departmental Public Body
+## SDET, Non-Departmental Public Body
 
 ***11/19 -- 09/20***
 
-Senior Software Tester for the agile project delivery of a non-departmental public body.
+SDET for the agile project delivery of a non-departmental public body.
 
 Testing GDS frontend and REST API middleware, consultancy and training to incumbent QA team, and performance testing backend SaaS configuration.
 
 *Technologies used: TypeScript, Groovy, Cucumber, Azure Pipelines, Enzyme, JAX-RS, Jest, JMeter, JSForce, React, Request, Selenium*
 
-## Senior Software Tester, Government Agency
+## SDET, Government Agency
 
 ***07/17 -- 10/19***
 
-Senior Software Tester for the digital transformation programme of a large government agency.
+SDET for the digital transformation programme of a large government agency.
 
 Tech leadership, buddy mentoring, and path to live architect. Performance testing secure enterprise workflow platform with a hybrid microservices architecture, including third-party endpoints.
 
