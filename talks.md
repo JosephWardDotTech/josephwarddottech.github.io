@@ -9,7 +9,23 @@ menu: true
 
 As a speaker, I prepare talks that I think will appeal to the software testing community. I also participate in debates about technology. Please get in touch if any of these sound interesting for your local meetup, or if you're looking for a tester who can add some strong opinions to your panel.
 
-## The Secret to Stable Selenium UI Tests (No, really...)
+## Testing Your Tests with Stryker Mutator
+
+***2024***
+
+A demonstration of Strker Mutator and how it can "test your tests," revealing gaps in coverage and challenging hidden assumptions. Remember: high test coverage doesn’t always mean useful coverage!
+
+![Testing Your Tests with Stryker Mutator)](./assets/img/test-talks/strykermutator.jpeg)
+
+## Contract-First Mocks using TypeScript, OpenAPI, and Wiremock
+
+***2024***
+
+An introduction to "Contract-First" Mocks and how they can improve software testing by promoting collaboration and ensuring mock contract accuracy earlier -- at compile time instead of during testing.
+
+![Contract-First Mocks using TypeScript, OpenAPI, and Wiremock)](./assets/img/test-talks/contractfirst.jpeg)
+
+## The Secret to Stable Seleniu UI Tests (No, really...)
 
 ***2024***
 
