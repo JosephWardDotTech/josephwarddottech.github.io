@@ -5,6 +5,8 @@ description: >
   CV of Joseph Ward, Consultant Software Tester at BJSS. 
 hide_description: true
 menu: true
+cover:  true 
+permalink: /
 ---
 
 A software tester who believes that quality should be baked in, not sprinkled on, and an advocate of asking the right questions at the right time to manage risk, save money, and cut time to delivery. A flexible SDET and Test Architect experienced with various programming languages and testing tools to achieve excellent results.
