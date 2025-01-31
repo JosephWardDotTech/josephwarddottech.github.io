@@ -8,6 +8,8 @@ menu: true
 permalink: /
 ---
 
+{% include my-body.html %}
+
 A software tester who believes that quality should be baked in, not sprinkled on, and an advocate of asking the right questions at the right time to manage risk, save money, and cut time to delivery. A flexible SDET and Test Architect experienced with various programming languages and testing tools to achieve excellent results.
 
 More details about my work at BJSS, including specific projects, are available [here](https://josephward.tech/projects/).
