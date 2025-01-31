@@ -24,7 +24,7 @@ title:                 Joseph Ward
 # A short description (~150 chars) of the page used for the meta description tag.
 # Can use markdown, but no more than one paragraph (enforced by `>`)
 description:           >
-  I test software and have strong opinions weakly held about software testing.
+  I test software and have strong but weakly held opinions about software testing.
 
 # A shorter description for the sidebar.
 tagline:               >
@@ -61,7 +61,7 @@ author:
 #     url:               /cookies-policy/
 
 # This text will appear in a `<small>` tag in the footer of every page.
-copyright:             © Joseph Ward 2018-2024. All Rights Reserved.
+copyright:             © Joseph Ward 2018-2025. All Rights Reserved.
 
 # Format of the permalinks
 permalink:             /:categories/:year-:month-:day-:title/
