@@ -7,7 +7,7 @@ hide_description: true
 menu: true
 ---
 
-As a speaker, I prepare talks that I think will appeal to the software testing community. I also participate in debates about technology. Please get in touch if any of these sound interesting for your local meetup, or if you're looking for a tester who can add some strong opinions to your panel.
+I prepare talks for the software testing community and take part in technology debates. If you're interested in having me speak at your local meetup or need a tester with strong opinions for your panel, please get in touch.
 
 ## Testing Your Tests with Stryker Mutator
 
@@ -29,7 +29,7 @@ An introduction to "Contract-First" Mocks and how they can improve software test
 
 ***2024***
 
-An examination of network manipulation commands in Cypress and Playwright and how they can be used in Selenium to enhance test reliability.
+Examining network manipulation commands in Cypress and Playwright to boost Selenium test reliability.
 
 This talk also became the topic of a blog post, which can he found [here](https://josephward.tech/2024-01-21-harmonising-selenium/).
 
@@ -55,7 +55,7 @@ Talking about Testing Surgery, a planned meetup to coach local testers about aut
 
 ***2019***
 
-Discussing the advantages, and disadvantages, of snapshot testing with the example of REST API tests.
+Discussing the advantages, and disadvantages, of snapshot testing REST APIs.
 
 ![Snapshot Testing a REST API](./assets/img/test-talks/snapshot-testing.png)
 
@@ -63,13 +63,13 @@ Discussing the advantages, and disadvantages, of snapshot testing with the examp
 
 ***2019***
 
-A concise introduction to the skills needed to identify, and exploit, security vulnerabilities.
+A brief introduction to the skills needed to identify, and exploit, security vulnerabilities.
 
 ## Are Programmers the Problem?
 
 ***2019***
 
-Panel member in a debate concerning ethics in the modern IT industry. 
+Panel member in a debate on ethics in the modern IT industry. 
 
 ![What is Test & Assurance?](./assets/img/test-talks/panel.jpeg)
 
@@ -93,6 +93,6 @@ Introducing the OWASP Juice Shop and its usefulness as a technical testing bed.
 
 ***2018***
 
-A short story about the differences between knowledge and experience in software testing.
+A short anecdote about the differences between 'knowledge' and 'experience' in software testing.
 
 ![Knowledge vs. Experience in Software Testing](./assets/img/test-talks/knowledge-vs-experience.jpg)
