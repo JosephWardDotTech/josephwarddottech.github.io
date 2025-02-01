@@ -9,6 +9,18 @@ cover:  true
 permalink: /
 ---
 
+<hy-img src="/assets/img/josephward.jpeg" class="avatar" 
+    alt="Joseph Ward" 
+    srcset="/assets/img/josephward.jpeg 1x,/assets/img/josephward.jpeg 2x" 
+    root-margin="512px">
+</hy-img>
+
+<noscript>
+    <img data-ignore src="/assets/img/josephward.jpeg" class="avatar" 
+        alt="Joseph Ward" 
+        srcset="/assets/img/josephward.jpeg 1x,/assets/img/josephward.jpeg 2x" />
+</noscript>
+
 I am a polyglot Software Develeopment Engineer in Test (SDET) with extensive experience working with clients in various sectors. Additionally, I regularly contribute to and host tech meetups, discussing topics of interest to the testing community.
 
 ## Clients
