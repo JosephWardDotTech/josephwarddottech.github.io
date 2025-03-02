@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About me
+title:
 description: >
   Joseph Ward, SDET
 hide_description: true
@@ -21,7 +21,7 @@ permalink: /
         srcset="/assets/img/josephward.jpeg 1x,/assets/img/josephward.jpeg 2x" />
 </noscript>
 
-I am a polyglot Software Develeopment Engineer in Test (SDET) with extensive experience working with clients in various sectors. Additionally, I regularly contribute to and host tech meetups, discussing topics of interest to the testing community.
+I am a polyglot testing technologist with extensive experience working with clients in various sectors. I also regularly contribute to and host tech meetups, discussing topics of interest to the testing community.
 
 ## Clients
 
