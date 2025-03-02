@@ -1,8 +1,7 @@
 ---
 layout: page
-title:
-description: >
-  Joseph Ward, SDET
+title: About
+description:
 hide_description: true
 menu: true
 cover:  true 
