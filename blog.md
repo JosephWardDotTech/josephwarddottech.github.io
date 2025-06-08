@@ -1,5 +1,5 @@
 ---
-layout: blogAdd commentMore actions
+layout: blog
 title: Blog
 description:
 hide_description: true
