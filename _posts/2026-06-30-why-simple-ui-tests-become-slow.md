@@ -257,64 +257,14 @@ Playwright can tell whether the browser considers an element visible, stable, en
 
 The useful distinction is between waiting for time to pass, waiting for a browser condition, and waiting for a testable condition. 
 
-## When the page replaces an element
-
-A page can replace a DOM node without appearing to change on the surface. 
-
-I tested a button that began disabled. After 50 milliseconds, the page replaced it with a new button. The replacement became enabled 100 milliseconds later.
-
-I compared a stored `ElementHandle` with a locator.
-
-```python
-button_handle = page.query_selector(
-    "[data-testid='approve']"
-)
-
-button_handle.click()
-```
-
-```python
-button = page.locator(
-    "[data-testid='approve']"
-)
-
-button.click()
-```
-
-The results were:
-
-| Approach | Median | Successful runs |
-|---|---:|---:|
-| Stored `ElementHandle` | 69.21 ms before failure | 0/6 |
-| Locator | 193.28 ms | 6/6 |
-
-The handle was quicker only because it failed as soon as Playwright discovered that the original node had been detached.
-
-The locator succeeded because it could resolve the matching element again while waiting for the click to become possible.
-
-In a real framework, the failed handle would usually lead to more work:
-
-```python
-try:
-    button_handle.click()
-except Error:
-    page.locator(
-        "[data-testid='approve']"
-    ).click()
-```
-
-That recovery path adds another lookup, another click attempt and whatever framework code surrounds the retry.
-
-Arguably, this benchmark is therefore not about which approach clicks faster. It shows that retaining a reference to one DOM node can create failure and recovery work when the page replaces that node (ie stale elements in other libraries). A locator avoids that path by describing how to find the current element.
-
-This affects reliability first. It affects execution time once retries and recovery code are included.
-
 ## Choosing what to change
 
-These examples became faster for different reasons. The table benefited from fewer browser calls. The button benefited from removing a fixed delay. The locator avoided a failure and retry path when the DOM node was replaced.
+These examples became faster for different reasons.
 
-Browser side filtering will not help a test littered with sleeps. Better waiting will not help a loop that retrieves thousands of values one by one. A lazy locator will not make an expensive calculation disappear.
+The table benefited from fewer browser calls. The button benefited from removing a fixed delay.
 
-The original loop looked like the obvious thing to optimise, but turned out to be doing very little computation. Most of its time was spent asking the browser hundreds of small questions.
+Browser-side filtering will not help a test littered with sleeps. Better waiting will not help a loop that retrieves thousands of values one by one.
+
+The original loop looked like the obvious thing to optimise, but it turned out to be doing very little computation. Most of its time was spent asking the browser hundreds of small questions.
 
 Did I miss something important? Am I crazy? Please let me know by getting in touch at [joseph@josephward.tech](mailto:joseph@josephward.tech).
