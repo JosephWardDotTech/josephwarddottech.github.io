@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Why Simple UI Tests Become Slow"
-date: 2026-06-30 16:38
+date: 2026-06-30 12:00
 tags: blog
 ---
 
