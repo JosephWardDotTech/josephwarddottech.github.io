@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: page
 title: "Looking Behind Playwright's Magic"
 permalink: /looking-behind-playwrights-magic/
 sitemap: false
