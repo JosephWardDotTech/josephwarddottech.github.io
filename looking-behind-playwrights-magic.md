@@ -41,7 +41,7 @@ async click(options: channels.ElementHandleClickOptions & TimeoutOptions = {}): 
 }
 ```
 
-That is the real implementation in [`locator.ts`, lines 1425–1429](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/client/locator.ts#L1425-L1429).
+That is the real implementation in [`locator.ts`, lines 88-90](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/client/locator.ts#L88-L90).
 
 There are two useful things to say about these few lines.
 
@@ -70,9 +70,9 @@ One of the first things it defines is the delay schedule:
 const waitTime = [0, 20, 100, 100, 500];
 ```
 
-The delay schedule is in [`dom.ts`, lines 2754–2774](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/dom.ts#L2754-L2774).
+The delay schedule is in [`dom.ts`, lines 261-271](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/dom.ts#L261-L271).
 
-The loop attempts the action again until it succeeds, fails in a non-retryable way, or hits the surrounding timeout. It handles results like an element not being visible or being outside the viewport. The following part of the same method shows those branches in [`dom.ts`, lines 2788–2815](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/dom.ts#L2788-L2815).
+The loop attempts the action again until it succeeds, fails in a non-retryable way, or hits the surrounding timeout. It handles results like an element not being visible or being outside the viewport. The following part of the same method shows those branches in [`dom.ts`, lines 278-291](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/dom.ts#L278-L291).
 
 We are now into a more useful description of auto-waiting than saying Playwright magically knows when the page is ready.
 
@@ -158,7 +158,7 @@ const handle = await progress.race(
 );
 ```
 
-This is real Playwright code from [`dom.ts`, lines 3015–3039](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/dom.ts#L3015-L3039).
+This is real Playwright code from [`dom.ts`, lines 391-403](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/dom.ts#L391-L403).
 
 If the browser reports that another element owns the "point", Playwright returns a hit-target description to the outer retry loop. That is the source of messages saying that a particular overlay or container intercepts pointer events.
 
@@ -194,7 +194,7 @@ await progress.race(this._client.send('Input.dispatchMouseEvent', {
 }));
 ```
 
-The real implementation, including `mousePressed` and `mouseReleased`, is in [`crInput.ts`, lines 800–893](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/chromium/crInput.ts#L800-L893).
+The real implementation, including `mousePressed` and `mouseReleased`, is in [`crInput.ts`, lines 89-135](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/chromium/crInput.ts#L89-L135).
 
 This is not the same as evaluating:
 
@@ -234,7 +234,7 @@ eventsHelper.addEventListener(session, 'Network.loadingFinished', ...);
 eventsHelper.addEventListener(session, 'Network.loadingFailed', ...);
 ```
 
-Those registrations are in [`crNetworkManager.ts`, lines 2199–2217](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/chromium/crNetworkManager.ts#L2199-L2217). The same setup also registers WebSocket lifecycle and frame listeners in [`lines 2219–2229`](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/chromium/crNetworkManager.ts#L2219-L2229).
+Those registrations are in [`crNetworkManager.ts`, lines 56-65](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/chromium/crNetworkManager.ts#L56-L65). The same setup also registers WebSocket lifecycle and frame listeners in [`lines 66-71`](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/chromium/crNetworkManager.ts#L66-L71).
 
 These are very close to the events I accessed through Selenium's Chrome performance log in the previous article.
 
@@ -257,13 +257,13 @@ if (!event.networkId) {
 }
 ```
 
-See [`crNetworkManager.ts`, lines 2502–2511](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/chromium/crNetworkManager.ts#L2502-L2511).
+See [`crNetworkManager.ts`, lines 207-211](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/chromium/crNetworkManager.ts#L207-L211).
 
 Playwright cannot wait to correlate that paused request with a `Network.requestWillBeSent` event because the source says that event will never arrive. So it continues the request instead.
 
-There is another special case for service workers. In `_onResponseReceived`, Playwright explains that frame-level requests handled by a service worker may never produce a `requestPaused` event. It may therefore create the request when the response arrives. See [`crNetworkManager.ts`, lines 2865–2888](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/chromium/crNetworkManager.ts#L2865-L2888).
+There is another special case for service workers. In `_onResponseReceived`, Playwright explains that frame-level requests handled by a service worker may never produce a `requestPaused` event. It may therefore create the request when the response arrives. See [`crNetworkManager.ts`, lines 389-400](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/chromium/crNetworkManager.ts#L389-L400).
 
-Header information has its own ordering problem. The source comment for `ResponseExtraInfoTracker` says the ordinary request/response events and their `ExtraInfo` events are dispatched on different, unassociated channels and may arrive in random order. The tracker associates them so the extra headers are reliably available by `requestfinished`. See [`crNetworkManager.ts`, lines 3404–3421](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/chromium/crNetworkManager.ts#L3404-L3421).
+Header information has its own ordering problem. The source comment for `ResponseExtraInfoTracker` says the ordinary request/response events and their `ExtraInfo` events are dispatched on different, unassociated channels and may arrive in random order. The tracker associates them so the extra headers are reliably available by `requestfinished`. See [`crNetworkManager.ts`, lines 658-666](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/chromium/crNetworkManager.ts#L658-L666).
 
 This is not glamorous work, but it is probably part of the reason the public API feels "magic" vs wrestling with the underlying protocol yourself.
 
@@ -286,7 +286,7 @@ requestStarted(request: network.Request, route?: network.RouteDelegate) {
 }
 ```
 
-That code is in [`frames.ts`, lines 2787–2813](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/frames.ts#L2787-L2813).
+That code is in [`frames.ts`, lines 278-291](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/frames.ts#L278-L291).
 
 Responses and completion events are fired nearby:
 
@@ -305,7 +305,7 @@ reportRequestFinished(request: network.Request, response: network.Response | nul
 }
 ```
 
-The real implementations, including request failure handling, are in [`frames.ts`, lines 2816–2858](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/frames.ts#L2816-L2858).
+The real implementations, including request failure handling, are in [`frames.ts`, lines 293-314](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/frames.ts#L293-L314).
 
 That is how low-level CDP events become the public interface used by tests:
 
@@ -357,7 +357,7 @@ private _inflightRequestStarted(request: network.Request) {
 }
 ```
 
-The source is in [`frames.ts`, lines 2883–2915](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/frames.ts#L2883-L2915).
+The source is in [`frames.ts`, lines 326-342](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/frames.ts#L326-L342).
 
 The implementation deliberately excludes favicons and EventSource connections:
 
@@ -371,11 +371,11 @@ private _isExcludedFromNetworkIdle(request: network.Request): boolean {
 }
 ```
 
-See [`frames.ts`, lines 2918–2927](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/frames.ts#L2918-L2927).
+See [`frames.ts`, lines 344-348](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/frames.ts#L344-L348).
 
 A favicon is browser housekeeping rather than meaningful application activity. An EventSource connection is long-lived by design, so including it would prevent pages using server-sent events from ever reaching network idle.
 
-The idle state is recalculated through the frame tree (the page and its nested iframes). Lifecycle state is recorded on frames, and clearing lifecycle state resets the timer around the remaining current-navigation request. The relevant lifecycle and reset handling can be followed in [`frames.ts`, lines 3176–3212](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/frames.ts#L3176-L3212).
+The idle state is recalculated through the frame tree (the page and its nested iframes). Lifecycle state is recorded on frames, and clearing lifecycle state resets the timer around the remaining current-navigation request. The relevant lifecycle and reset handling can be followed in [`frames.ts`, lines 473-491](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/frames.ts#L473-L491).
 
 It's already more specific than saying "Playwright waits until there are no requests".
 
@@ -416,11 +416,11 @@ async waitForSignalsCreatedBy<T>(
 }
 ```
 
-That is the real method in [`frames.ts`, lines 2547–2574](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/frames.ts#L2547-L2574).
+That is the real method in [`frames.ts`, lines 158-172](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/frames.ts#L158-L172).
 
 The `SignalBarrier` acts as a gate: it holds the action open until any navigation the click started has been acknowledged.
 
-When a frame may request navigation, active gates are retained. When the possible request has been resolved, they are released. If a frame actually requests a navigation, Playwright adds that frame navigation to the gate. See [`frames.ts`, lines 2578–2615](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/frames.ts#L2578-L2615).
+When a frame may request navigation, active gates are retained. When the possible request has been resolved, they are released. If a frame actually requests a navigation, Playwright adds that frame navigation to the gate. See [`frames.ts`, lines 174-192](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/frames.ts#L174-L192).
 
 The gate is not waiting for every network request caused by a click.
 
