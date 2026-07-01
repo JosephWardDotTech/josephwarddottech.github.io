@@ -41,7 +41,7 @@ async click(options: channels.ElementHandleClickOptions & TimeoutOptions = {}): 
 }
 ```
 
-That is the real implementation in [`locator.ts`, lines 88-90](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/client/locator.ts#L88-L90).
+That is the real implementation in [`locator.ts`, lines 113-115](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/client/locator.ts#L113-L115).
 
 There are two useful things to say about these few lines.
 
@@ -70,9 +70,9 @@ One of the first things it defines is the delay schedule:
 const waitTime = [0, 20, 100, 100, 500];
 ```
 
-The delay schedule is in [`dom.ts`, lines 261-271](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/dom.ts#L261-L271).
+The delay schedule is in [`dom.ts`, lines 263-264](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/dom.ts#L263-L264).
 
-The loop attempts the action again until it succeeds, fails in a non-retryable way, or hits the surrounding timeout. It handles results like an element not being visible or being outside the viewport. The following part of the same method shows those branches in [`dom.ts`, lines 278-291](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/dom.ts#L278-L291).
+The loop attempts the action again until it succeeds, fails in a non-retryable way, or hits the surrounding timeout. It handles results like an element not being visible or being outside the viewport. The following part of the same method shows those branches in [`dom.ts`, lines 281-293](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/dom.ts#L281-L293).
 
 We are now into a more useful description of auto-waiting than saying Playwright magically knows when the page is ready.
 
@@ -92,7 +92,7 @@ enabled
 stable
 ```
 
-The Playwright-side logic calls `injected.checkElementStates` against the target element. That path can be followed in [`dom.ts`](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/dom.ts).
+The Playwright-side logic calls `injected.checkElementStates` against the target element. That path can be followed in [`dom.ts`, lines 366-372](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/dom.ts#L366-L372).
 
 The three states solve different problems.
 
@@ -158,7 +158,7 @@ const handle = await progress.race(
 );
 ```
 
-This is real Playwright code from [`dom.ts`, lines 391-403](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/dom.ts#L391-L403).
+This is real Playwright code from [`dom.ts`, line 395](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/dom.ts#L395).
 
 If the browser reports that another element owns the "point", Playwright returns a hit-target description to the outer retry loop. That is the source of messages saying that a particular overlay or container intercepts pointer events.
 
@@ -234,7 +234,7 @@ eventsHelper.addEventListener(session, 'Network.loadingFinished', ...);
 eventsHelper.addEventListener(session, 'Network.loadingFailed', ...);
 ```
 
-Those registrations are in [`crNetworkManager.ts`, lines 56-65](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/chromium/crNetworkManager.ts#L56-L65). The same setup also registers WebSocket lifecycle and frame listeners in [`lines 66-71`](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/chromium/crNetworkManager.ts#L66-L71).
+Those registrations are in [`crNetworkManager.ts`, lines 59-65](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/chromium/crNetworkManager.ts#L59-L65). The same setup also registers WebSocket lifecycle and frame listeners in [`lines 70-76`](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/chromium/crNetworkManager.ts#L70-L76).
 
 These are very close to the events I accessed through Selenium's Chrome performance log in the previous article.
 
@@ -257,7 +257,7 @@ if (!event.networkId) {
 }
 ```
 
-See [`crNetworkManager.ts`, lines 207-211](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/chromium/crNetworkManager.ts#L207-L211).
+See [`crNetworkManager.ts`, lines 206-211](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/chromium/crNetworkManager.ts#L206-L211).
 
 Playwright cannot wait to correlate that paused request with a `Network.requestWillBeSent` event because the source says that event will never arrive. So it continues the request instead.
 
@@ -286,7 +286,7 @@ requestStarted(request: network.Request, route?: network.RouteDelegate) {
 }
 ```
 
-That code is in [`frames.ts`, lines 278-291](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/frames.ts#L278-L291).
+That code is in [`frames.ts`, lines 278-291](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/frames.ts#L281-L293).
 
 Responses and completion events are fired nearby:
 
