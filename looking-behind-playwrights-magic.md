@@ -1,6 +1,8 @@
 ---
+layout: post
 title: "Looking Behind Playwright's Magic"
-date: 2026-07-01
+permalink: /looking-behind-playwrights-magic/
+sitemap: false
 ---
 
 In a [previous post](https://josephward.tech/2024-01-21-harmonising-selenium/), I used Chrome performance logs and other approaches to observe CDP network events from Selenium. In Chromium, Playwright listens to those same events, but I didn't look at how it turns them into its own model, or how that work fits around actions like:
