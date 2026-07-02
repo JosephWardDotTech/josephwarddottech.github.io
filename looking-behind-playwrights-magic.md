@@ -5,25 +5,25 @@ permalink: /looking-behind-playwrights-magic/
 sitemap: false
 ---
 
-In a [previous post](https://josephward.tech/2024-01-21-harmonising-selenium/), I used Chrome performance logs and other approaches to observe CDP network events from Selenium. In Chromium, Playwright listens to those same events, but I didn't look at how it turns them into its own model, or how that work fits around actions like:
+In a [previous post](https://josephward.tech/2024-01-21-harmonising-selenium/), I used several methods to observe CDP network events from Selenium. In Chromium, Playwright listens to those same events, but I didn't look at how it turns them into its own model, or how that work fits around other actions like the "magic", auto-waiting:
 
 ```ts
 await page.getByRole('button', { name: 'Submit' }).click();
 ```
 
-Let's break it down.
+So without further ado let's break it down!
 
-There are two things going on here. 
+Tere are two things going on here. 
 
-Before the input is sent, Playwright checks whether the element can actually receive it. It resolves the locator, waits for relevant element states, scrolls to the target, calculates its coordinates, and checks whether another element would actually receive the input.
+Before the input is sent, Playwright checks whether the target can actually receive it. It resolves the locator, waits for relevant element states, scrolls to it, calculates its coordinates, and checks whether another element would actually receive the input.
 
 Once that input is sent, Playwright may need to track what the browser does next. Our click might begin a navigation, submit a form, open a new page, or trigger more network requests.
 
-My previous post concentrated mainly on that second part. This time I want to follow both through the source.
+My previous post concentrated mainly on that final part. This time we'll follow the whole process.
 
-(Note: Firefox and WebKit have different browser mechanisms behind the same high level Playwright abstractions, so here I am solely talking about Chromium and CDP implementations.)
+(Note: Firefox and WebKit have different browser mechanisms behind the same high level Playwright abstractions but here I am only talking about Chromium and CDP implementations.)
 
-All the Playwright links are pinned to commit [`ad18048`](https://github.com/microsoft/playwright/commit/ad18048db947ca0a47c7fa59b77718e3a06afafe) from 1 July 2026. 
+Note: all the Playwright links are pinned to commit [`ad18048`](https://github.com/microsoft/playwright/commit/ad18048db947ca0a47c7fa59b77718e3a06afafe) from 1 July 2026. 
 
 ## It starts with a locator
 
@@ -45,11 +45,11 @@ That is the real implementation in [`locator.ts`, lines 113-115](https://github.
 
 There are two useful things to say about these few lines.
 
-The locator has a selector, not an element fetched earlier. Playwright can therefore resolve it against the document when the action is attempted. That alone helps on pages where a renderer might remove one node and insert another that represents the same thing (leading to a potentially confusing stale element exception).
+The locator is a selector, not an element fetched earlier. Playwright can therefore resolve it against the document when the action is actually needed. That alone helps on pages where a renderer might remove one node and insert another that represents the same thing (leading to a potentially confusing "stale element" exception).
 
-The `strict: true` option means the action expects one match. If the locator resolves to several buttons, Playwright reports an ambiguity rather than choosing the first.
+The `strict: true` option means the action expects **one** match. If the locator resolves to several buttons, Playwright reports an ambiguity rather than just choosing the first.
 
-I like that failure mode. A selector matching several Submit buttons is usually something I want to fix, not something I want the framework to conceal.
+I like that failure mode. A selector matching several `Submit` buttons is usually something I'd want to fix, not something I want the framework to conceal from me.
 
 The locator call crosses Playwright's client/server boundary and eventually reaches the server-side element action code in:
 
@@ -57,11 +57,11 @@ The locator call crosses Playwright's client/server boundary and eventually reac
 packages/playwright-core/src/server/dom.ts
 ```
 
-That is where most of the pre-click "magic" starts to appear.
+That is where most of the pre-click "magic" starts to reveal itself.
 
 ## A click may need retrying
 
-The internal click path passes the mechanics into Playwright's pointer-action code. The eventual mouse action itself is surrounded by `_retryAction`, which contains a retry loop used for element operations.
+The internal click path passes the mechanics into Playwright's element interaction code. The eventual mouse action itself is surrounded by `_retryAction`, which contains a retry loop used for element operations.
 
 One of the first things it defines is the delay schedule:
 
@@ -70,21 +70,21 @@ One of the first things it defines is the delay schedule:
 const waitTime = [0, 20, 100, 100, 500];
 ```
 
-The delay schedule is in [`dom.ts`, lines 263-264](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/dom.ts#L263-L264).
+The delay schedule is in [`dom.ts`, lines 318-319](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/dom.ts#L318-L319).
 
-The loop attempts the action again until it succeeds, fails in a non-retryable way, or hits the surrounding timeout. It handles results like an element not being visible or being outside the viewport. The following part of the same method shows those branches in [`dom.ts`, lines 281-293](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/dom.ts#L281-L293).
+The loop attempts the action again until it succeeds, fails in a non-retryable way, or hits the surrounding timeout. It handles results like an element not being visible or being outside the viewport. The following part of the same method shows those branches in [`dom.ts`, lines 297-314](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/dom.ts#L297-L314).
 
-We are now into a more useful description of auto-waiting than saying Playwright magically knows when the page is ready.
+We are now into a more useful description of auto-waiting than saying Playwright "magically" knows when things are ready.
 
-It does not have or need a universal definition of page readiness. It decides whether a requested action can proceed.
+It does not have or need a universal definition of page 'ready'. It decides whether a requested action can proceed.
 
-The distinction matters because many modern pages never become completely "inactive" so therefore completely "ready". It may keep a WebSocket open, poll for notifications, or load extra material after the main interface is usable.
+The distinction matters because many modern pages never become completely "inactive" so therefore, logically, completely "ready". It may keep a WebSocket open, poll for notifications, or load extra stuff after the main interface is technically usable.
 
-Therefore, the narrower question is whether a particular element can receive a particular action.
+Therefore, the narrower question is whether a particular target can receive a particular action.
 
 ## What Playwright checks before sending input
 
-For a normal click, Playwright checks states including:
+For a normal click, Playwright checks multiple states, including some we're probably familiar with:
 
 ```text
 visible
@@ -92,17 +92,17 @@ enabled
 stable
 ```
 
-The Playwright-side logic calls `injected.checkElementStates` against the target element. That path can be followed in [`dom.ts`, lines 366-372](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/dom.ts#L366-L372).
+The Playwright-side logic calls `injected.checkElementStates` against the target element. That path can be followed in [`dom.ts`, lines 432-440](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/dom.ts#L432-L440).
 
-The three states solve different problems.
+These three states solve different problems.
 
-A node being present in the DOM does not mean it has useful rendered geometry. A disabled control may be perfectly visible but still should not receive a normal user action. A button may also be visible and enabled while moving across the page due to an animation.
+A node being 'present' in the DOM does not mean it has useful rendered geometry. A 'disabled' element may be perfectly visible but still should not receive a normal user action. A button may also be 'visible' and 'enabled' while moving across the page due to an animation.
 
 The stable check observes the element across animation frames instead of adding one fixed delay to every action.
 
-(I doubt this makes races impossible. The application can always change again after a check. Playwright is reducing the common timing window rather than claiming to make the browser bulletproof.)
+(FWIW: I doubt this makes races impossible. The application can always change again after a check, such is the nature of things. Playwright is just reducing the common timing window rather than claiming to make things bulletproof.)
 
-Once those checks pass, Playwright scrolls the target into view. During retries, it can try different alignments instead of relying on one scroll position. The source comments explain that a normal scroll can leave an element underneath an overlay, so an alternative alignment may produce a usable target.
+Once those checks pass, Playwright scrolls the target into view. During retries, it tries different alignments instead of relying on one scroll position. The source comments explain that a normal scroll can leave an element underneath an overlay, so an alternative alignment may produce a usable target.
 
 Playwright then calculates a coordinate from the element's geometry.
 
@@ -118,35 +118,33 @@ into something the browser can definitely use:
 a point at x and y
 ```
 
-It still needs to determine whether the "point" belongs to the intended element.
+But, it still needs to determine whether the "point" belongs to the intended element at the time of action.
 
 ## What `force` skips
 
-Following the source makes `force: true` less mysterious:
+Following the source makes Playwright's `force: true` a bit less mysterious:
 
 ```ts
 await locator.click({ force: true });
 ```
 
-The forced path skips normal actionability work (the visible, enabled and stable checks above, plus the hit-target check described next) and proceeds straight towards the input.
+The `force`d path skips normal actionability work (the visible, enabled and stable checks above, plus the click-target check described next) and proceeds straight towards the input.
 
 I would read it as:
 
 > Attempt the input without requiring Playwright's usual evidence that a user could perform it.
 
-It does not make the click more realistic. It removes some of the checks designed to establish realism.
-
 There are valid uses for that, but it can also hide the interesting problem: a loading overlay never went away, the locator found a hidden duplicate or the control remained disabled.
 
-The network side is separate. If the forced input triggers a navigation or requests, Playwright can still observe those browser events. The question is whether the test still demonstrates an interaction available to a user.
+The network side is unaffected. If the forced input triggers a navigation or requests, Playwright can still observe those browser events. The question is whether the test still demonstrates an interaction a user could perform.
 
-## Visibility is not hit testing
+## Visibility is not click targeting
 
 A visible button can sit underneath another element.
 
-A loading overlay may be nearly transparent, leaving the button visible to a person, while still taking the pointer event. An element can therefore pass a visibility check without being the browser's hit target.
+A loading overlay may be nearly transparent, leaving the button visible to a person, while still taking the pointer event. An element can therefore pass a visibility check without being the browser's click target.
 
-Playwright uses injected code to check the "point" and install a hit-target interceptor:
+Playwright uses injected code to check which element would receive the pointer event and install a hit-target interceptor:
 
 ```ts
 const handle = await progress.race(
@@ -158,15 +156,13 @@ const handle = await progress.race(
 );
 ```
 
-This is real Playwright code from [`dom.ts`, line 395](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/dom.ts#L395).
+This is real Playwright code from [`dom.ts`, line 470](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/dom.ts#L470).
 
-If the browser reports that another element owns the "point", Playwright returns a hit-target description to the outer retry loop. That is the source of messages saying that a particular overlay or container intercepts pointer events.
+If the browser reports that another element owns the point, Playwright returns a hit-target description to the outer retry loop. That is the source of messages saying that a particular overlay or container intercepts events.
 
-It is a more specific error, and the hit-target result participates in deciding whether the click should be attempted again.
+That result feeds back into the retry loop, which decides whether to attempt the click again.
 
-Frames make this more involved because the coordinate must be checked through the frame order. Playwright has a separate frame hit-target step before setting up the interceptor.
-
-I am leaving most of that alone here.
+Frames make this more involved because the coordinate must be checked through the frame order. Playwright has a separate frame hit-target step before setting up the interceptor. I am leaving most of that alone here.
 
 ## Chromium receives a mouse event
 
@@ -194,7 +190,7 @@ await progress.race(this._client.send('Input.dispatchMouseEvent', {
 }));
 ```
 
-The real implementation, including `mousePressed` and `mouseReleased`, is in [`crInput.ts`, lines 89-135](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/chromium/crInput.ts#L89-L135).
+The real implementation, including `mousePressed` and `mouseReleased`, is in [`crInput.ts`, lines 104-164](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/chromium/crInput.ts#L104-L164).
 
 This is not the same as evaluating:
 
@@ -206,11 +202,11 @@ inside the page.
 
 The DOM method invokes the element's actual, programmatic click behaviour. The CDP route sends browser input at a position.
 
-That difference is the reason for much of Playwright's action code. Chromium's input domain does not understand a role selector or an accessible name. Playwright has to resolve the semantic target, inspect its current state and produce valid coordinates before Chromium can do anything with it.
+That difference is the reason for much of Playwright's action code. Chromium's input domain does not understand a 'role selector' or an 'accessible name'. Playwright has to resolve the semantic target, inspect its current state, and produce valid coordinates before Chromium can do anything with it.
 
-The input is only half of the story. Playwright also needs to know what that input causes.
+The input is only half of the story. Playwright also needs to know what that input causes. Which brings us nicely onto...
 
-## The network path starts in `crNetworkManager`
+## The network path! Starting in `crNetworkManager`
 
 The Chromium-specific network implementation is:
 
@@ -234,11 +230,11 @@ eventsHelper.addEventListener(session, 'Network.loadingFinished', ...);
 eventsHelper.addEventListener(session, 'Network.loadingFailed', ...);
 ```
 
-Those registrations are in [`crNetworkManager.ts`, lines 59-65](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/chromium/crNetworkManager.ts#L59-L65). The same setup also registers WebSocket lifecycle and frame listeners in [`lines 70-76`](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/chromium/crNetworkManager.ts#L70-L76).
+Those registrations are in [`crNetworkManager.ts`, lines 67-75](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/chromium/crNetworkManager.ts#L67-L75). The same setup also registers WebSocket lifecycle and frame listeners in [`lines 79-85`](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/chromium/crNetworkManager.ts#L79-L85).
 
-These are very close to the events I accessed through Selenium's Chrome performance log in the previous article.
+These are very close to the events I accessed through Selenium's Chrome performance log in the previous post. 😀
 
-The difference is not that Playwright has access to a completely different network. It has an implementation that uses those browser events, deals with their ordering, and converts them into its own internal model.
+Playwright uses the same browser events, but wraps an implementation that deals with their ordering and converts them into its own internal model.
 
 ## Predictably, CDP does not deliver one tidy request object
 
@@ -257,13 +253,13 @@ if (!event.networkId) {
 }
 ```
 
-See [`crNetworkManager.ts`, lines 206-211](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/chromium/crNetworkManager.ts#L206-L211).
+See [`crNetworkManager.ts`, lines 245-249](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/chromium/crNetworkManager.ts#L245-L249).
 
 Playwright cannot wait to correlate that paused request with a `Network.requestWillBeSent` event because the source says that event will never arrive. So it continues the request instead.
 
-There is another special case for service workers. In `_onResponseReceived`, Playwright explains that frame-level requests handled by a service worker may never produce a `requestPaused` event. It may therefore create the request when the response arrives. See [`crNetworkManager.ts`, lines 389-400](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/chromium/crNetworkManager.ts#L389-L400).
+There is another special case for service workers. In `_onResponseReceived`, Playwright explains that frame-level requests handled by a service worker may never produce a `requestPaused` event. It may therefore create the request when the response arrives. See [`crNetworkManager.ts`, lines 451-453](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/chromium/crNetworkManager.ts#L451-L453).
 
-Header information has its own ordering problem. The source comment for `ResponseExtraInfoTracker` says the ordinary request/response events and their `ExtraInfo` events are dispatched on different, unassociated channels and may arrive in random order. The tracker associates them so the extra headers are reliably available by `requestfinished`. See [`crNetworkManager.ts`, lines 658-666](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/chromium/crNetworkManager.ts#L658-L666).
+Header information has its own ordering problem. The source comment for `ResponseExtraInfoTracker` says the ordinary request/response events and their `ExtraInfo` events are dispatched on different, unassociated channels and may arrive in random order. The tracker associates them so the extra headers are reliably available by `requestfinished`. See [`crNetworkManager.ts`, lines 769-782](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/chromium/crNetworkManager.ts#L769-L782).
 
 This is not glamorous work, but it is probably part of the reason the public API feels "magic" vs wrestling with the underlying protocol yourself.
 
@@ -286,7 +282,7 @@ requestStarted(request: network.Request, route?: network.RouteDelegate) {
 }
 ```
 
-That code is in [`frames.ts`, lines 278-291](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/frames.ts#L281-L293).
+That code is in [`frames.ts`, lines 329-343](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/frames.ts#L329-L343).
 
 Responses and completion events are fired nearby:
 
@@ -305,9 +301,9 @@ reportRequestFinished(request: network.Request, response: network.Response | nul
 }
 ```
 
-The real implementations, including request failure handling, are in [`frames.ts`, lines 293-314](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/frames.ts#L293-L314).
+The real implementations, including request failure handling, are in [`frames.ts`, lines 345-356](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/frames.ts#L345-L356).
 
-That is how low-level CDP events become the public interface used by tests:
+That is how low-level CDP events become the public interface used by tests, which you can access by: 
 
 ```ts
 page.on('request', request => {
@@ -357,9 +353,9 @@ private _inflightRequestStarted(request: network.Request) {
 }
 ```
 
-The source is in [`frames.ts`, lines 326-342](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/frames.ts#L326-L342).
+The source is in [`frames.ts`, lines 385-403](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/frames.ts#L385-L403).
 
-The implementation deliberately excludes favicons and EventSource connections:
+Notably, the implementation deliberately excludes favicons and EventSource connections:
 
 ```ts
 private _isExcludedFromNetworkIdle(request: network.Request): boolean {
@@ -371,11 +367,11 @@ private _isExcludedFromNetworkIdle(request: network.Request): boolean {
 }
 ```
 
-See [`frames.ts`, lines 344-348](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/frames.ts#L344-L348).
+See [`frames.ts`, lines 405-411](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/frames.ts#L405-L411).
 
-A favicon is browser housekeeping rather than meaningful application activity. An EventSource connection is long-lived by design, so including it would prevent pages using server-sent events from ever reaching network idle.
+I'd guess this is because a favicon is browser housekeeping rather than meaningful activity. An EventSource connection is arguably long-lived by design, so including it would prevent pages using server-sent events from ever reporting 'network idle'.
 
-The idle state is recalculated through the frame tree (the page and its nested iframes). Lifecycle state is recorded on frames, and clearing lifecycle state resets the timer around the remaining current-navigation request. The relevant lifecycle and reset handling can be followed in [`frames.ts`, lines 473-491](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/frames.ts#L473-L491).
+The idle state is recalculated through the frame tree (i.e. the page and its nested iframes). Lifecycle state is recorded on frames, and clearing lifecycle state resets the timer around the remaining current-navigation request. The relevant lifecycle and reset handling can be followed in [`frames.ts`, lines 573-584](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/frames.ts#L573-L584).
 
 It's already more specific than saying "Playwright waits until there are no requests".
 
@@ -416,11 +412,11 @@ async waitForSignalsCreatedBy<T>(
 }
 ```
 
-That is the real method in [`frames.ts`, lines 158-172](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/frames.ts#L158-L172).
+That is the real method in [`frames.ts`, lines 158-172](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/frames.ts#L192-L207).
 
 The `SignalBarrier` acts as a gate: it holds the action open until any navigation the click started has been acknowledged.
 
-When a frame may request navigation, active gates are retained. When the possible request has been resolved, they are released. If a frame actually requests a navigation, Playwright adds that frame navigation to the gate. See [`frames.ts`, lines 174-192](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/frames.ts#L174-L192).
+When a frame may request navigation, active gates are retained. When the possible request has been resolved, they are released. If a frame actually requests a navigation, Playwright adds that frame navigation to the gate. See [`frames.ts`, lines 169-189](https://github.com/microsoft/playwright/blob/ad18048db947ca0a47c7fa59b77718e3a06afafe/packages/playwright-core/src/server/frames.ts#L169-L189).
 
 The gate is not waiting for every network request caused by a click.
 
@@ -444,7 +440,7 @@ The response wait is created before the click for the same general reason as the
 
 ## Connecting this back to Selenium
 
-Following the source changes how I would describe my previous experiment, but it does not make it wrong.
+Reading the source changed how I'd describe my previous experiment.
 
 The Chrome performance log approach was observing real CDP network events. Playwright's Chromium network manager listens to the same family of events.
 
@@ -452,7 +448,7 @@ What Playwright adds is a substantial layer around them. It installs protocol li
 
 My Selenium examples covered a narrower problem: determine whether network activity appears to be in progress or not.
 
-That can still be enough for a particular test suite. The heavier implementation in Playwright exists because a reusable framework has to handle more varied browser behaviour, support different test types and writing styles, and build in redundancy that an application-specific helper does not need.
+That can still be enough for a particular test suite. The heavier implementation in Playwright exists because a reusable framework has to handle more varied browser behaviour, support different test types and writing styles, and and handle edge cases that an application-specific helper can ignore.
 
 A network counter also does not address the other half of the problem.
 
@@ -470,9 +466,9 @@ I started with one line:
 await page.getByRole('button', { name: 'Submit' }).click();
 ```
 
-Following it through the source produced two connected systems.
+Following it through the source, there are two sides to what happens.
 
-The first prepares and sends the input:
+One sends the input:
 
 ```text
 resolve the locator
@@ -483,7 +479,7 @@ check the hit target
 dispatch browser input
 ```
 
-The second watches what the browser does:
+The other watches what the browser does next:
 
 ```text
 receive raw request and response events from the browser
@@ -495,13 +491,13 @@ wait for navigations triggered by the action
 calculate network-idle state across the page and its iframes
 ```
 
-These are the browser and network signals I was trying to expose to Selenium in the previous article. Playwright really does use them.
+These are the same browser and network signals I was trying to expose to Selenium in the previous article.
 
 It also does considerably more than count requests.
 
-The Chromium protocol is noisy and occasionally incomplete. Related information arrives through different events and can arrive in an inconvenient order. Requests can redirect, come from service workers, be served from cache or fail before all expected events appear. Playwright contains code for turning that into a more stable model.
+CDP is noisy and occasionally incomplete. Related information arrives through different events and can arrive in an inconvenient order. Requests can redirect, come from service workers, be served from cache or fail before all expected events appear. Playwright contains code for turning that into a more stable model.
 
-None of this means that a Playwright test should wait for `networkidle` after every action. The implementation shows why it is only one signal. It measures a quiet period where no tracked requests are active. It does not measure whether the application is correct or useful.
+The implementation shows why `networkidle` is only one signal: a quiet period where no tracked requests are active. What matters after that is up to the test.
 
 I still do not think the conclusion is simply to choose Playwright over Selenium.
 
@@ -509,10 +505,10 @@ Selenium users can observe CDP events, execute browser-side JavaScript and build
 
 The useful lesson is to be clear about what we are waiting for.
 
-Before a click, that might be a stable and unobstructed target. After it, that might be a navigation lifecycle event (like `load` or `DOMContentLoaded`) or one specific API response. Sometimes network idle is useful. Sometimes it is the wrong question entirely.
+Before a click, that might be a stable and unobstructed target. After it, that might be a navigation lifecycle event, or one specific API response.
 
 I may still try reproducing Playwright's "is something blocking the click" check in Selenium.
 
-I will not be reproducing `crNetworkManager`. Life is short.
+I will not be reproducing `crNetworkManager`. Life's too short!
 
 Did I get something wrong? Have you been down a similar rabbit hole in Playwright or Selenium? Please let me know by getting in touch at [joseph@josephward.tech](mailto:joseph@josephward.tech).
